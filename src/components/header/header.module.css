@@ -1,0 +1,28 @@
+.header {
+    grid-area: h;
+    background: rgb(255,0,0);
+    background: linear-gradient(38deg, rgba(255,0,0,1) 0%, rgba(255,115,0,1) 56%, rgba(241,255,0,1) 100%);
+    position: fixed;
+    width: 1200px;
+    border: 2px inset black;
+    border-top: 0;
+    border-radius: 40px;
+    -webkit-box-shadow: 0px 6px 18px 11px rgba(144, 11, 11, 0.31);
+    -moz-box-shadow: 0px 6px 18px 11px rgba(144, 11, 11, 0.31);
+    box-shadow: 0px 6px 18px 11px rgba(144, 11, 11, 0.31);
+    display: flex;
+    z-index: 999;
+}
+.name {
+    font-family: Ember, serif;
+    font-size: xxx-large;
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+}
+.header img {
+
+    display: block;
+    margin: 3px;
+    width: 5vh;
+}

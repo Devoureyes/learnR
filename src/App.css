@@ -1,0 +1,63 @@
+@import url('http://fonts.cdnfonts.com/css/raslani-messenger');
+@font-face {
+    font-family: Ember;
+    src: url("Ember.otf");
+}
+
+body {
+    background-color: rgb(30,30,30);
+}
+.app-wrapper {
+    margin: 0 auto;
+    display: grid;
+    width: 1200px;
+    grid-template-areas:
+    "h h"
+    "n c";
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+    /*grid-gap: 10px;*/
+
+}
+.style {
+    border-radius: 3vh;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    overflow: hidden;
+}
+
+.myButton {
+    box-shadow: 0px 10px 14px -7px #899599;
+    background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+    background-color:#ededed;
+    border-radius:4px;
+    border:1px solid lightseagreen;
+    display:inline-block;
+    cursor:pointer;
+    color:#000000;
+    font-size:13px;
+    font-weight:bold;
+    padding:6px 12px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #e1e2ed;
+}
+.myButton:hover {
+    background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+    background-color:#bab1ba;
+}
+.myButton:active {
+    position:relative;
+    top:1px;
+}
+
+textarea {
+    width: 230px;
+    height:60px;
+    border:1px solid lightseagreen;
+    border-left: 4px solid lightseagreen;
+}
+.content {
+    margin: 1vh 1vh 0 0;
+    grid-area: c;
+    background-color: rgba(155,155,155,0.5);
+    border: 2px inset black;
+}
