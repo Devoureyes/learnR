@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 const DialogItem = (p) => {
     return (
         <div className={s.dialog + '' + s.active}>
-            <NavLink to={`/messages/${p.n}`}>
+            <NavLink to={"/messages/" + p.n}>
                 {p.name}
             </NavLink>
         </div>
@@ -17,7 +17,13 @@ const Messagge = (p) => {
     )
 }
 
-const Dialogs = () => {
+let d = [
+    {id: 1, name: 'Andrew'},
+    {id: 2, name: 'Andy'},
+    {id: 3, name: 'Andrew_bot'},
+]
+
+const Dialogs = (p) => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogs_items}>
