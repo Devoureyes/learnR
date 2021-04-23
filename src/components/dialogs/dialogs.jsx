@@ -23,18 +23,20 @@ let d = [
     {id: 3, name: 'Andrew_bot'},
 ]
 
+let m = [
+    {id:1, m: 'Hi'},
+    {id:2, m: 'lol'},
+    {id:3, m: 'Yo'},
+]
+
 const Dialogs = (p) => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogs_items}>
-                <DialogItem n="1" name="Andrew"/>
-                <DialogItem n="2" name="Andy"/>
-                <DialogItem n="3" name="Andrew_bot"/>
+                {d.map((el) => <DialogItem n={el.id} name={el.name}/>)}
             </div>
             <div className={s.messages}>
-                <Messagge m="hi"/>
-                <Messagge m="yo"/>
-                <Messagge m="lol"/>
+                {m.map((el) => <Messagge m={el.m}/>)}
             </div>
         </div>
     )
