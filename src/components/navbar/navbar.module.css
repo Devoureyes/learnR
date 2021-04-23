@@ -20,3 +20,8 @@
     text-decoration: none;
     color: white;
 }
+
+.itemnav.active {
+    color: gold;
+    text-decoration: line-through rgba(255,255,255,0.5);
+}
