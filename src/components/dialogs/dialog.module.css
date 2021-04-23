@@ -1,0 +1,20 @@
+.dialogs {
+    padding: 2vh;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+
+}
+
+.dialogs_items .dialog {
+
+}
+
+.delete {
+
+}
+
+
+
+.messages {
+
+}
