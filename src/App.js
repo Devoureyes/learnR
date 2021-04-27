@@ -3,21 +3,23 @@ import './App.css';
 import Header from "./components/header/header";
 import Navbar from "./components/navbar/navbar";
 import Dialogs from "./components/dialogs/dialogs";
-import s from "./components/Profile/profile.module.css";
 import Profile from "./components/Profile/profile";
 import {BrowserRouter, Route} from "react-router-dom";
 
 
-const App = () => {
+
+const App = (p) => {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
                 <Navbar/>
                 <div className="content style">
-                    <Route path='/messages' component={Dialogs}/>
-                    <Route path='/profile' component={Profile}/>
-                    {/*<Dialogs />*/}
+                    {/*<Route path='/messages' component={Dialogs}/>*/}
+                    {/*<Route path='/profile' render={Profile}/>*/}
+
+                    <Route path='/messages' render={() => <Dialogs messages={p.messages} names={p.names}/>}/>
+                    <Route path='/profile' render={() => <Profile posts={p.posts}/>}/>
                 </div>
             </div>
         </BrowserRouter>
