@@ -18,8 +18,8 @@ const App = (p) => {
                     {/*<Route path='/messages' component={Dialogs}/>*/}
                     {/*<Route path='/profile' render={Profile}/>*/}
 
-                    <Route path='/messages' render={() => <Dialogs messages={p.messages} names={p.names}/>}/>
-                    <Route path='/profile' render={() => <Profile posts={p.posts}/>}/>
+                    <Route path='/messages' render={() => <Dialogs messages={p.state.messagesPage.messages} names={p.state.messagesPage.names}/>}/>
+                    <Route path='/profile' render={() => <Profile posts={p.state.profilePage.posts}/>}/>
                 </div>
             </div>
         </BrowserRouter>
