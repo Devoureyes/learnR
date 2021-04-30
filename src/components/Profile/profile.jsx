@@ -10,7 +10,7 @@ const Profile = (p) => {
         <div>
             <ProfileInfo />
             <Slideshow />
-            <MyPosts posts={p.posts}/>
+            <MyPosts state={p.state} addPost={p.addPost}/>
         </div>
     )
 }

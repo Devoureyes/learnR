@@ -2,16 +2,24 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/post";
 import React from "react";
 
-
-
 const MyPosts = (p) => {
+
+    let newPostEl = React.createRef();
+
+    let addPost = () => {
+        let text = newPostEl.current.value;
+        p.addPost(text);
+        newPostEl.current.value = '';
+    }
+
     return (
         <div className={s.posts}>
             <div className={s.add}>
-                <textarea/>
-                <button className={`myButton ${s.but}`}>Add new post</button>
+                <textarea ref={newPostEl}/>
+                <button onClick={addPost} className={`myButton ${s.but}`}>Add new post
+                </button>
             </div>
-            {p.posts.map((el) => <Post post={el.post}/>)}
+            {p.state.posts.map((el) => <Post state={el}/>)}
         </div>
     )
 }
