@@ -7,15 +7,18 @@ const MyPosts = (p) => {
     let newPostEl = React.createRef();
 
     let addPost = () => {
+        p.addPost();
+    }
+
+    let onPostChange = () => {
         let text = newPostEl.current.value;
-        p.addPost(text);
-        newPostEl.current.value = '';
+        p.updateNewPostText(text);
     }
 
     return (
         <div className={s.posts}>
             <div className={s.add}>
-                <textarea ref={newPostEl}/>
+                <textarea onChange={onPostChange} ref={newPostEl} value={p.state.postText} />
                 <button onClick={addPost} className={`myButton ${s.but}`}>Add new post
                 </button>
             </div>

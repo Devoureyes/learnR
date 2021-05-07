@@ -18,7 +18,7 @@ const App = (p) => {
                     {/*<Route path='/profile' render={Profile}/>*/}
 
                     <Route path='/messages' render={() => <Dialogs state={p.state.messagesPage}/>}/>
-                    <Route path='/profile' render={() => <Profile state={p.state.profilePage} addPost={p.addPost}/>}/>
+                    <Route path='/profile' render={() => <Profile state={p.state.profilePage} addPost={p.addPost} updateNewPostText={p.updateNewPostText} />}/>
                 </div>
             </div>
     )
