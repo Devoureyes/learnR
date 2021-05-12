@@ -20,7 +20,7 @@ body {
 
 }
 .style {
-    border-radius: 3vh;
+    border-radius: 50px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
     overflow: hidden;
 }

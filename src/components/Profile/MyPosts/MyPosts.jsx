@@ -1,26 +1,24 @@
 import s from "./MyPosts.module.css";
 import Post from "./Post/post";
 import React from "react";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/state";
-
+import {addPostCreator, updateNewPostTextCreator} from "../../../redux/profileReducer";
 
 const MyPosts = (p) => {
 
     let newPostEl = React.createRef();
 
     let addPost = () => {
-        p.dispatch(addPostActionCreator());
+        p.dispatch(addPostCreator());
     }
 
     let onPostChange = () => {
         let text = newPostEl.current.value;
-        p.dispatch(updateNewPostTextActionCreator(text));
+        p.dispatch(updateNewPostTextCreator(text));
     }
-
     return (
         <div className={s.posts}>
             <div className={s.add}>
-                <textarea onChange={onPostChange} ref={newPostEl} value={p.state.postText}/>
+                <textarea onChange={onPostChange} ref={newPostEl} placeholder='Type something' value={p.state.postText}/>
                 <button onClick={addPost} className={`myButton ${s.but}`}>Add new post
                 </button>
             </div>

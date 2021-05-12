@@ -1,10 +1,11 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+import profileReducer from "./profileReducer";
+import messagesReducer from "./messagesReducer";
+import sidebarReducer from "./sidebarReducer";
 
 let store = {
     _state: {
         profilePage: {
-            postText: 'Type something',
+            postText: '',
             posts: [
                 {id: 1, post: 'Now look at this', likeCount: 12},
                 {id: 2, post: 'Today, i\'m went to the park and ate a hamburger', likeCount: 12},
@@ -21,8 +22,10 @@ let store = {
                 {id: 1, message: 'Hi'},
                 {id: 2, message: 'lol'},
                 {id: 3, message: 'Yo'},
-            ]
-        }
+            ],
+            newMessageBody: '',
+        },
+        sideBar: {},
     },
     _callSubcriber() {
         console.log('state changed');
@@ -35,29 +38,13 @@ let store = {
         this._callSubcriber = observer
     },
 
-    _addPost() {
-        let newPost = {
-            id: 4,
-            post: this._state.profilePage.postText,
-            likeCount: 0,
-        }
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.postText = ''
-        this._callSubcriber(this._state);
-    },
-    _updateNewPostText(newText) {
-        this._state.profilePage.postText = newText
-        this._callSubcriber(this._state);
-    },
     dispatch(action) { // {type:'ADD-POST',message:'lol'}
-        if (action.type === 'ADD-POST') {
-            this._addPost()
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._updateNewPostText(action.text)
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.messagesPage = messagesReducer(this._state.messagesPage, action)
+        this._state.sideBar = sidebarReducer(this._state.sideBar, action)
+
+        this._callSubcriber(this._state)
     }
 }
-export const addPostActionCreator = () => ({type: ADD_POST})
-export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, text: text})
 
 export default store;

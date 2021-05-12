@@ -17,7 +17,7 @@ const App = (p) => {
                     {/*<Route path='/messages' component={Dialogs}/>*/}
                     {/*<Route path='/profile' render={Profile}/>*/}
 
-                    <Route path='/messages' render={() => <Dialogs state={p.state.messagesPage}/>}/>
+                    <Route path='/messages' render={() => <Dialogs state={p.state.messagesPage} dispatch={p.dispatch}/>}/>
                     <Route path='/profile' render={() => <Profile state={p.state.profilePage} dispatch={p.dispatch}/>}/>
                 </div>
             </div>
