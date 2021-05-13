@@ -2,9 +2,9 @@ import React from "react";
 import './App.css';
 import Header from "./components/header/header";
 import Navbar from "./components/navbar/navbar";
-import Dialogs from "./components/dialogs/dialogs";
 import Profile from "./components/Profile/profile";
 import {Route} from "react-router-dom";
+import DialogsContainer from "./components/dialogs/dialogsContainer";
 
 
 
@@ -17,8 +17,8 @@ const App = (p) => {
                     {/*<Route path='/messages' component={Dialogs}/>*/}
                     {/*<Route path='/profile' render={Profile}/>*/}
 
-                    <Route path='/messages' render={() => <Dialogs state={p.state.messagesPage} dispatch={p.dispatch}/>}/>
-                    <Route path='/profile' render={() => <Profile state={p.state.profilePage} dispatch={p.dispatch}/>}/>
+                    <Route path='/messages' render={() => <DialogsContainer store={p.store} />}/>
+                    <Route path='/profile' render={() => <Profile store={p.store}/>}/>
                 </div>
             </div>
     )

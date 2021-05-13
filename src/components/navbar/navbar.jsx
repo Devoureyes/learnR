@@ -12,6 +12,18 @@ const Navbar = () => {
                 <li><NavLink className={s.itemnav} activeClassName={s.active} to="/music">Music</NavLink></li>
                 <li><NavLink className={s.itemnav} activeClassName={s.active} to="/settings">Settings</NavLink></li>
             </ul>
+            <div className={s.loader}>
+                <span><img src="https://static.vecteezy.com/system/resources/previews/001/191/986/non_2x/circle-logo-png.png"
+                           alt="" width="70"/></span>
+                <span><img src="https://static.vecteezy.com/system/resources/previews/001/191/986/non_2x/circle-logo-png.png"
+                           alt="" width="70"/></span>
+                <span><img src="https://static.vecteezy.com/system/resources/previews/001/191/986/non_2x/circle-logo-png.png"
+                           alt="" width="70"/></span>
+                <span><img src="https://static.vecteezy.com/system/resources/previews/001/191/986/non_2x/circle-logo-png.png"
+                           alt="" width="70"/></span>
+                {/*<span><img src="https://static.vecteezy.com/system/resources/previews/001/191/986/non_2x/circle-logo-png.png"
+                           alt="" width="70"/></span>*/}
+            </div>
         </nav>
     )
 }

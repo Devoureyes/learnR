@@ -22,6 +22,9 @@
     max-width: 150px;
     max-height: 150px;
     justify-content: flex-start;
+    animation: rotation 0.3s;
+    animation-delay: 2s;
+    animation-iteration-count: 2;
 }
 
 .spotify {
@@ -38,3 +41,10 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+@keyframes rotation {
+50% {
+    transform: rotate(20deg);
+}
+}
+

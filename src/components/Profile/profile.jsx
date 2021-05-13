@@ -1,7 +1,8 @@
 import React from "react"
-import MyPosts from "./MyPosts/MyPosts";
+//import MyPosts from "./MyPosts/MyPosts";
 import Slideshow from "../sl";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
 
@@ -10,7 +11,7 @@ const Profile = (p) => {
         <div>
             <ProfileInfo />
             <Slideshow />
-            <MyPosts state={p.state} dispatch={p.dispatch} />
+            <MyPostsContainer store={p.store} />
         </div>
     )
 }
