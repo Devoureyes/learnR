@@ -2,7 +2,6 @@
     padding: 2vh;
     display: grid;
     grid-template-columns: 2fr 10fr;
-
 }
 
 .delete {
@@ -11,6 +10,13 @@
 
 .dialogs_items {}
 
-.messages{}
+.messages{
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+}
 
+.messageInput {
+flex-grow: 1;
+}
 

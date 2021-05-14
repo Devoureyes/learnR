@@ -11,7 +11,7 @@ const Profile = (p) => {
         <div>
             <ProfileInfo />
             <Slideshow />
-            <MyPostsContainer store={p.store} />
+            <MyPostsContainer />
         </div>
     )
 }

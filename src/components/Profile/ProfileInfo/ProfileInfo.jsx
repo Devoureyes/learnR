@@ -3,7 +3,7 @@ import s from './ProfileInfo.module.css'
 
 const ProfileInfo = () => {
     return (
-        <div>
+        <div className={s.profileInfo}>
             <div>
                 <img className={s.imgtop} src="https://look.com.ua/pic/201603/1920x1200/look.com.ua-155959.jpg" alt=""/>
             </div>

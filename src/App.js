@@ -17,8 +17,8 @@ const App = (p) => {
                     {/*<Route path='/messages' component={Dialogs}/>*/}
                     {/*<Route path='/profile' render={Profile}/>*/}
 
-                    <Route path='/messages' render={() => <DialogsContainer store={p.store} />}/>
-                    <Route path='/profile' render={() => <Profile store={p.store}/>}/>
+                    <Route path='/messages' render={() => <DialogsContainer />}/>
+                    <Route path='/profile' render={() => <Profile />}/>
                 </div>
             </div>
     )

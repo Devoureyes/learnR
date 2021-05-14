@@ -1,4 +1,9 @@
 .nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
     margin: 1vh 0 0 1vh;
     padding: 1vh;
     grid-area: n;
@@ -13,12 +18,14 @@
 }
 
 .ulnav {
+
     list-style-type: none;
     padding: 3vh;
     text-align: center;
 }
 
 .itemnav {
+
     text-decoration: none;
     color: white;
 }
