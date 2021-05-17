@@ -4,8 +4,8 @@ import Message from "./message/message";
 
 const Dialogs = (p) => {
 
-    let dialogElements = p.state.names.map((el) => <DialogItem n={el.id} name={el.name}/>)
-    let messageElements = p.state.messages.map((el) => <Message m={el.message}/>)
+    let dialogElements = p.state.names.map((el) => <DialogItem n={el.id} key={el.id} name={el.name}/>)
+    let messageElements = p.state.messages.map((el) => <Message m={el.message} key={el.id} />)
     let newMessageBody = p.state.newMessageBody
 
     let onSendMessageClick = () => {
