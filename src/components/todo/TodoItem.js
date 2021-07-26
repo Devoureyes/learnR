@@ -37,8 +37,8 @@ const TodoItem = ({todo, index, onChange}) => {
         classes.push('done')
     }
 
-    return (<li style={styles.li}>
-        <span className={classes.join(' ')}>
+    return (<li className="li_todo" style={styles.li}>
+        <span onClick={() => {onChange(todo.id)}} className={classes.join(' ')}>
             <input
                 style={styles.input}
                 checked={todo.completed}

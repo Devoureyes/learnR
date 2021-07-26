@@ -21,7 +21,7 @@ const AddTodo = ({onCreate}) => {
     function submitHandler(event) {
         event.preventDefault()
 
-        if(input.value().trim()) {
+        if (input.value().trim()) {
             onCreate(input.value())
             input.clear()
         }
@@ -29,7 +29,12 @@ const AddTodo = ({onCreate}) => {
 
     return (
         <form style={{marginBottom: '1rem'}} onSubmit={submitHandler}>
-            <input {...input.bind} />
+            <label className="field field_v3">
+                <input className="field__input" placeholder="Введите новую задачу" {...input.bind}/>
+                <span className="field__label-wrap">
+                    <span className="field__label">TODO</span>
+                </span>
+            </label>
             <button type="submit">Add todo</button>
         </form>
     )
