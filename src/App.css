@@ -57,7 +57,14 @@ textarea {
 }
 .content {
     margin: 1vh 0 0 1vh;
+    padding: 1vh 0 0 1vh;
     grid-area: c;
     background-color: rgba(155,155,155,0.5);
     border: 2px inset black;
+}
+.done {
+    text-decoration: line-through;
+}
+button:hover {
+    background: bisque;
 }
