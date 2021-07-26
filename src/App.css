@@ -63,7 +63,7 @@ textarea {
     border: 2px inset black;
 }
 .done {
-    text-decoration: line-through;
+    text-decoration: line-through #8ae552;
 }
 button:hover {
     background: #e58811 !important;
