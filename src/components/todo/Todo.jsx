@@ -17,7 +17,7 @@ export default () => {
     React.useEffect(() => {
         /*http://mepnew/api/test*/
         /*https://jsonplaceholder.typicode.com/todos?_limit=10*/
-        fetch('http://mepnew/api/test')
+        fetch('http://fearset.xyz/api/test')
             .then(response => response.json())
             .then(todos => {
                 setTodos(todos)

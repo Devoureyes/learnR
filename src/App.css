@@ -57,7 +57,6 @@ textarea {
 }
 .content {
     margin: 1vh 0 0 1vh;
-    padding: 1vh 0 0 1vh;
     grid-area: c;
     background-color: rgba(155,155,155,0.5);
     border: 2px inset black;
@@ -241,21 +240,11 @@ button:hover {
 
     top: var(--fieldHintTopHover, .25rem);
 }
-
-/*
-effect 1
-*/
-
 .field_v1 .field__label-wrap::after{
     border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
     transition: opacity .2s ease-out;
     will-change: opacity;
 }
-
-/*
-effect 2
-*/
-
 .field_v2 .field__label-wrap{
     overflow: hidden;
 }
@@ -271,11 +260,6 @@ effect 2
     transform: translate3d(0, 0, 0);
     transition-delay: 0;
 }
-
-/*
-effect 3
-*/
-
 .field_v3 .field__label-wrap::after{
     border: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
     will-change: opacity, height;
@@ -286,23 +270,11 @@ effect 3
     height: 100%;
 }
 
-/*
-=====
-LEVEL 4. SETTINGS
-=====
-*/
-
 .field{
     --fieldBorderColor: #eeff00;
     --fieldBorderColorActive: #ff9232;
 ;
 }
-
-/*
-=====
-DEMO
-=====
-*/
 
 .page{
     box-sizing: border-box;

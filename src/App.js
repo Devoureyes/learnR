@@ -5,10 +5,8 @@ import Navbar from "./components/navbar/navbar";
 import Profile from "./components/Profile/profile";
 import {Route} from "react-router-dom";
 import DialogsContainer from "./components/dialogs/dialogsContainer";
-import Users from "./components/users/users";
+import UsersContainer from "./components/users/UsersContainer";
 import Todo from "./components/todo/Todo";
-
-
 
 const App = (p) => {
     return (
@@ -21,7 +19,7 @@ const App = (p) => {
                     <Route path='/todo' render={() => <Todo />}/>
                     <Route path='/messages' render={() => <DialogsContainer />}/>
                     <Route path='/profile' render={() => <Profile />}/>
-                    <Route path='/users' render={ () => <Users />}/>
+                    <Route path='/users' render={() => <UsersContainer />}/>
                 </div>
             </div>
     )
