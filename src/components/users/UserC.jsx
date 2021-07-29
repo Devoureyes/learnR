@@ -1,33 +1,32 @@
 import React from "react";
-import s from './users.module.css'
 import axios from "axios";
-import userPhoto from './no_poster.jpg'
+import s from "./users.module.css";
+import userPhoto from "./no_poster.jpg";
 
-let Users = (p) => {
-    let getUsers = () => {
-        if (p.users.length === 0) {
-            axios.get('https://social-network.samuraijs.com/api/1.0/users')
-                .then(response => {
-                    p.setUsers(response.data.items)
-                })
-        }
+export default class UserC extends React.Component {
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.page}&take=${this.props.count}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+            })
     }
-    return <div className={s.users}>
-        <button onClick={getUsers}>Get Users</button>
-        {p.users.map(u  => <div key={u.id}>
+
+    render() {
+        return <div className={s.users}>
+            {this.props.users.map(u  => <div key={u.id}>
                     <span>
                         <div>
                             <img className={s.userPhoto} width="100px" src={u.photos.small != null ? u.photos.small : userPhoto} alt=""/>
                         </div>
                         <div>
                             {u.followed
-                                ? <button onClick={() => {p.unfollow(u.id)}}>Unfollow</button>
-                                : <button onClick={() => {p.follow(u.id)}}>Follow</button>}
+                                ? <button onClick={() => {this.props.unfollow(u.id)}}>Unfollow</button>
+                                : <button onClick={() => {this.props.follow(u.id)}}>Follow</button>}
                         </div>
                     </span>
                     <span>
                         <span>
-                            <div>{u.fullName}</div>
+                            <div>{u.name}</div>
                             <div>{u.status}</div>
                         </span>
                         <span>
@@ -37,7 +36,7 @@ let Users = (p) => {
                     </span>
                 </div>
             )}
-    </div>
+            <button >More</button>
+        </div>
+    }
 }
-
-export default Users;
