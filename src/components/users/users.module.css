@@ -4,3 +4,29 @@
 .userPhoto {
 
 }
+.pages {
+    width: auto;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pages span {
+    cursor: pointer;
+    width: 20px;
+    margin: 2px 5px;
+    padding: 2px 7px;
+    border: 1px solid #ff9232;
+    border-radius: 30%;
+    transition: 0.2s;
+    text-align: center;
+}
+.selectedPage {
+    font-weight: bold;
+    color: #ff9232;
+}
+.pages span:hover {
+    transform: scale(1.15);
+    background: rgba(253, 117, 26, 0.66);
+    color: black;
+}

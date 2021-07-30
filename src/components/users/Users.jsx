@@ -109,7 +109,6 @@ Users.propTypes = {
     currentPages: PropTypes.number,
     currentPage: PropTypes.number,
     pageSize: PropTypes.number,
-    follow: PropTypes.func.isRequired,
-    unfollow: PropTypes.func.isRequired,
-    setCurrentPages: PropTypes.func.isRequired,
+    unfollow: PropTypes.func,
+    setCurrentPages: PropTypes.func,
 }
