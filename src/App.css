@@ -1,16 +1,18 @@
 @import url('http://fonts.cdnfonts.com/css/raslani-messenger');
+
 @font-face {
     font-family: Ember;
     src: url("Ember.otf");
 }
 
 body {
-    background-color: rgb(30,30,30);
+    background-color: rgb(30, 30, 30);
 }
+
 .app-wrapper {
     margin: 0 auto;
     display: grid;
-    width: 1200px;
+    width: 65%;
     grid-template-areas:
     "h h"
     "n c";
@@ -19,51 +21,57 @@ body {
     /*grid-gap: 10px;*/
 
 }
+
 .style {
     border-radius: 50px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Параметры тени */
     overflow: hidden;
 }
 
 .myButton {
     box-shadow: 0px 10px 14px -7px #899599;
-    background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
-    background-color:#ededed;
-    border-radius:4px;
-    border:1px solid lightseagreen;
-    display:inline-block;
-    cursor:pointer;
-    color:#000000;
-    font-size:13px;
-    font-weight:bold;
-    padding:6px 12px;
-    text-decoration:none;
-    text-shadow:0px 1px 0px #e1e2ed;
+    background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+    background-color: #ededed;
+    border-radius: 4px;
+    border: 1px solid lightseagreen;
+    display: inline-block;
+    cursor: pointer;
+    color: #000000;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 6px 12px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #e1e2ed;
 }
+
 .myButton:hover {
-    background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
-    background-color:#bab1ba;
+    background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+    background-color: #bab1ba;
 }
+
 .myButton:active {
-    position:relative;
-    top:1px;
+    position: relative;
+    top: 1px;
 }
 
 textarea {
     width: 230px;
-    height:60px;
-    border:1px solid lightseagreen;
+    height: 60px;
+    border: 1px solid lightseagreen;
     border-left: 4px solid lightseagreen;
 }
+
 .content {
     margin: 1vh 0 0 1vh;
     grid-area: c;
-    background-color: rgba(155,155,155,0.5);
+    background-color: rgba(155, 155, 155, 0.5);
     border: 2px inset black;
 }
+
 .done {
     text-decoration: line-through #8ae552;
 }
+
 button:hover {
     background: #e58811 !important;
 }
@@ -74,6 +82,7 @@ button:hover {
     width: 80px;
     height: 80px;
 }
+
 .lds-ellipsis div {
     position: absolute;
     top: 33px;
@@ -83,22 +92,27 @@ button:hover {
     background: #fff;
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
+
 .lds-ellipsis div:nth-child(1) {
     left: 8px;
     animation: lds-ellipsis1 0.6s infinite;
 }
+
 .lds-ellipsis div:nth-child(2) {
     left: 8px;
     animation: lds-ellipsis2 0.6s infinite;
 }
+
 .lds-ellipsis div:nth-child(3) {
     left: 32px;
     animation: lds-ellipsis2 0.6s infinite;
 }
+
 .lds-ellipsis div:nth-child(4) {
     left: 56px;
     animation: lds-ellipsis3 0.6s infinite;
 }
+
 @keyframes lds-ellipsis1 {
     0% {
         transform: scale(0);
@@ -107,6 +121,7 @@ button:hover {
         transform: scale(1);
     }
 }
+
 @keyframes lds-ellipsis3 {
     0% {
         transform: scale(1);
@@ -115,6 +130,7 @@ button:hover {
         transform: scale(0);
     }
 }
+
 @keyframes lds-ellipsis2 {
     0% {
         transform: translate(0, 0);
@@ -129,7 +145,7 @@ button:hover {
 }
 
 /*TODO: Это input text start*/
-.field__input{
+.field__input {
     --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #ffa509);
 
     background-color: transparent;
@@ -143,15 +159,15 @@ button:hover {
     font-size: inherit;
 }
 
-.field__input:focus::-webkit-input-placeholder{
+.field__input:focus::-webkit-input-placeholder {
     color: var(--uiFieldPlaceholderColor);
 }
 
-.field__input:focus::-moz-placeholder{
+.field__input:focus::-moz-placeholder {
     color: var(--uiFieldPlaceholderColor);
 }
 
-.field{
+.field {
     --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
     --uiFieldPaddingRight: var(--fieldPaddingRight, 1rem);
     --uiFieldPaddingLeft: var(--fieldPaddingLeft, 1rem);
@@ -162,7 +178,7 @@ button:hover {
     font-size: var(--fieldFontSize, 1rem);
 }
 
-.field__input{
+.field__input {
     box-sizing: border-box;
     width: var(--fieldWidth, 100%);
     height: var(--fieldHeight, 3rem);
@@ -170,31 +186,31 @@ button:hover {
     border-bottom: var(--uiFieldBorderWidth) solid var(--fieldBorderColor, rgba(255, 0, 0, 0.84));
 }
 
-.field__input:focus{
+.field__input:focus {
     outline: none;
 }
 
-.field__input::-webkit-input-placeholder{
+.field__input::-webkit-input-placeholder {
     opacity: 0;
     transition: opacity .2s ease-out;
 }
 
-.field__input::-moz-placeholder{
+.field__input::-moz-placeholder {
     opacity: 0;
     transition: opacity .2s ease-out;
 }
 
-.field__input:focus::-webkit-input-placeholder{
+.field__input:focus::-webkit-input-placeholder {
     opacity: 1;
     transition-delay: .2s;
 }
 
-.field__input:focus::-moz-placeholder{
+.field__input:focus::-moz-placeholder {
     opacity: 1;
     transition-delay: .2s;
 }
 
-.field__label-wrap{
+.field__label-wrap {
     box-sizing: border-box;
     pointer-events: none;
     cursor: text;
@@ -206,7 +222,7 @@ button:hover {
     left: 0;
 }
 
-.field__label-wrap::after{
+.field__label-wrap::after {
     content: "";
     box-sizing: border-box;
     width: 100%;
@@ -218,11 +234,11 @@ button:hover {
     left: 0;
 }
 
-.field__input:focus ~ .field__label-wrap::after{
+.field__input:focus ~ .field__label-wrap::after {
     opacity: 1;
 }
 
-.field__label{
+.field__label {
     position: absolute;
     left: var(--uiFieldPaddingLeft);
     top: calc(50% - .5em);
@@ -235,48 +251,50 @@ button:hover {
 }
 
 .field__input:focus ~ .field__label-wrap .field__label,
-.field__input:not(:placeholder-shown) ~ .field__label-wrap .field__label{
+.field__input:not(:placeholder-shown) ~ .field__label-wrap .field__label {
     --fieldHintFontSize: var(--fieldHintFontSizeFocused, .75rem);
 
     top: var(--fieldHintTopHover, .25rem);
 }
-.field_v1 .field__label-wrap::after{
+
+.field_v1 .field__label-wrap::after {
     border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
     transition: opacity .2s ease-out;
     will-change: opacity;
 }
-.field_v2 .field__label-wrap{
+
+.field_v2 .field__label-wrap {
     overflow: hidden;
 }
 
-.field_v2 .field__label-wrap::after{
+.field_v2 .field__label-wrap::after {
     border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
     transform: translate3d(-105%, 0, 0);
     will-change: transform, opacity;
     transition: transform .285s ease-out .2s, opacity .2s ease-out .2s;
 }
 
-.field_v2 .field__input:focus ~ .field__label-wrap::after{
+.field_v2 .field__input:focus ~ .field__label-wrap::after {
     transform: translate3d(0, 0, 0);
     transition-delay: 0;
 }
-.field_v3 .field__label-wrap::after{
+
+.field_v3 .field__label-wrap::after {
     border: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
     will-change: opacity, height;
     transition: height .2s ease-out, opacity .2s ease-out;
 }
 
-.field_v3 .field__input:focus ~ .field__label-wrap::after{
+.field_v3 .field__input:focus ~ .field__label-wrap::after {
     height: 100%;
 }
 
-.field{
+.field {
     --fieldBorderColor: #eeff00;
-    --fieldBorderColorActive: #ff9232;
-;
+    --fieldBorderColorActive: #ff9232;;
 }
 
-.page{
+.page {
     box-sizing: border-box;
     width: 100%;
     max-width: 480px;
@@ -286,4 +304,5 @@ button:hover {
     display: grid;
     grid-gap: 30px;
 }
+
 /*TODO: Это input text end*/
