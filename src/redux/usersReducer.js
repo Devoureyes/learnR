@@ -1,9 +1,11 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
+const MORE = 'MORE'
 
 
-const usersReducer = (state = {users:[]}, action) => {
+
+const usersReducer = (state = {users: []}, action) => {
     switch (action.type){
         case FOLLOW:
             return  {
@@ -25,6 +27,8 @@ const usersReducer = (state = {users:[]}, action) => {
             }
         case SET_USERS:
             return {...state, users: [...state.users, ...action.users]}
+        case MORE:
+            return {...state,page:1,count:5}
         default:
             return state
     }
