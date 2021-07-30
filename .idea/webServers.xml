@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="e6170e61-377b-4310-bd08-f7b49068e62e" name="arefrussia" url="http://31.31.198.39">
+      <webServer id="e6170e61-377b-4310-bd08-f7b49068e62e" name="dev" url="http://31.31.198.39">
         <fileTransfer rootFolder="/www/devoureyes.online" host="31.31.198.39" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />

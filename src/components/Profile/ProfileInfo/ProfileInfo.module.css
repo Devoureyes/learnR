@@ -37,7 +37,6 @@
 .imgtop {
     width: 100%;
     object-fit: cover;
-    object-position: 0 0;
     max-height: 150px;
     vertical-align: middle;
     display: block;
@@ -57,4 +56,6 @@
     align-items: center;
     align-content: center;
 }
-
+.profileInfo > div {
+    width: 100%;
+}

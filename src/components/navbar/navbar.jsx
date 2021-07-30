@@ -3,8 +3,7 @@ import s from "./navbar.module.css"
 import {NavLink} from "react-router-dom";
 
 const Navbar = () => {
-    return (
-        <nav className={`${s.nav} style`}>
+    return <nav className={`${s.nav} style`}>
             <ul className={s.ulnav}>
                 <li><NavLink className={s.itemnav} activeClassName={s.active} to="/profile">Profile</NavLink></li>
                 <li><NavLink className={s.itemnav} activeClassName={s.active} to="/users">Users</NavLink></li>
@@ -30,7 +29,6 @@ const Navbar = () => {
                            alt="" width="70"/></span>*/}
             </div>
         </nav>
-    )
 }
 
 export default Navbar;

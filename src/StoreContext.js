@@ -8,4 +8,4 @@ export const Provider = (p) => {
     </StoreContext.Provider>
 }
 
-export default  StoreContext;
+export default StoreContext;

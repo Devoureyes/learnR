@@ -1,3 +1,4 @@
+/*
 import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
 import sidebarReducer from "./sidebarReducer";
@@ -47,4 +48,4 @@ let store = {
     }
 }
 
-export default store;
+export default store;*/

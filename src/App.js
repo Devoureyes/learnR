@@ -8,21 +8,19 @@ import DialogsContainer from "./components/dialogs/dialogsContainer";
 import UsersContainer from "./components/users/UsersContainer";
 import Todo from "./components/todo/Todo";
 
-const App = (p) => {
-    return (
-            <div className="app-wrapper">
-                <Header/>
-                <Navbar/>
-                <div className="content style">
-                    {/*<Route path='/messages' component={Dialogs}/>*/}
-                    {/*<Route path='/profile' render={Profile}/>*/}
-                    <Route path='/todo' render={() => <Todo />}/>
-                    <Route path='/messages' render={() => <DialogsContainer />}/>
-                    <Route path='/profile' render={() => <Profile />}/>
-                    <Route path='/users' render={() => <UsersContainer />}/>
-                </div>
-            </div>
-    )
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => {
+    return <div className="app-wrapper">
+        <Header/>
+        <Navbar/>
+        <div className="content style">
+            {/*<Route path='/messages' component={Dialogs}/>*/}
+            {/*<Route path='/profile' render={Profile}/>*/}
+            <Route path='/todo' render={() => <Todo/>}/>
+            <Route path='/messages' render={() => <DialogsContainer/>}/>
+            <Route path='/profile' render={() => <Profile/>}/>
+            <Route path='/users' render={() => <UsersContainer/>}/>
+        </div>
+    </div>
 }
 
-export default App;

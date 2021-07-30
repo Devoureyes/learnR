@@ -1,19 +1,27 @@
 import s from './dialog.module.css'
 import DialogItem from "./dialogitem/dialogitem";
 import Message from "./message/message";
+import PropTypes from "prop-types";
 
 const Dialogs = (p) => {
-    let dialogElements = p.state.names.map((el) => <DialogItem n={el.id} key={el.id} name={el.name}/>)
-    let messageElements = p.state.messages.map((el) => <Message m={el.message} key={el.id} />)
-    let newMessageBody = p.state.newMessageBody
+    const {
+        names,
+        messages,
+        newMessageBody,
+        sendMessage,
+        updateNewMessageBody
+    } = p
+
+    let dialogElements = names.map((el) => <DialogItem n={el.id} key={el.id} name={el.name}/>)
+    let messageElements = messages.map((el) => <Message m={el.message} key={el.id}/>)
 
     let onSendMessageClick = () => {
-        p.sendMessage();
+        sendMessage();
     }
 
     let onNewMessageChange = (e) => {
         let text = e.target.value;
-        p.updateNewMessageBody(text);
+        updateNewMessageBody(text);
     }
 
     return (
@@ -37,3 +45,11 @@ const Dialogs = (p) => {
 }
 
 export default Dialogs;
+
+Dialogs.propTypes = {
+    names: PropTypes.arrayOf(PropTypes.object),
+    messages: PropTypes.arrayOf(PropTypes.object),
+    newMessageBody: PropTypes.string,
+    sendMessage: PropTypes.func.isRequired,
+    updateNewMessageBody: PropTypes.func.isRequired,
+}
