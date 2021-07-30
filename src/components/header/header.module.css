@@ -3,7 +3,7 @@
     background: rgb(255,0,0);
     background: linear-gradient(38deg, rgba(255,0,0,1) 0%, rgba(255,115,0,1) 56%, rgba(241,255,0,1) 100%);
     position: fixed;
-    width: 65%;
+    width: 1200px;
     border: 2px inset black;
     border-top: 0;
     border-radius: 40px;
@@ -13,6 +13,12 @@
     display: flex;
     z-index: 999;
 }
+@media screen and (max-device-width: 767px) {
+    .header {
+        width: 100%;
+    }
+}
+
 .name {
     font-family: Ember, serif;
     font-size: xxx-large;
