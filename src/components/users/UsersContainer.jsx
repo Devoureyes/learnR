@@ -45,14 +45,12 @@ class UsersContainer extends React.Component {
             onPageChanged
         } = this
 
-        let pagesCount = Math.ceil(totalUsersCount / pageSize)
-        let scrollPagesCount = Math.ceil(pagesCount / 10)
+        let scrollPagesCount = Math.ceil(totalUsersCount / (pageSize*10))
         let pages = []
-
         for (let i = 0; i < scrollPagesCount; i++) {
             let x = []
             for (let j = 1; j <= 10; j++) {
-                x.push(i * 10 + j)
+                i*10+j-1 < totalUsersCount/10 && x.push(i * 10 + j)
             }
             pages.push(x)
         }
@@ -67,13 +65,23 @@ class UsersContainer extends React.Component {
                       setCurrentPages={setCurrentPages}/>
     }
 }
+
 let mapStateToProps = (state) => {
+    const {
+        usersPage: {
+            users,
+            pageSize,
+            totalUsersCount,
+            currentPage,
+            currentPages
+        }
+    } = state
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        currentPages: state.usersPage.currentPages
+        users,
+        pageSize,
+        totalUsersCount,
+        currentPage,
+        currentPages
     }
 }
 let mapDispatchToProps = (dispatch) => {

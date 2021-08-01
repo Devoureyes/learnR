@@ -5,15 +5,16 @@ import PropTypes from "prop-types";
 
 const Users = (props) => {
     const {
-        users,
-        currentPages,
-        currentPage,
-        unfollow,
-        follow,
-        pages,
-        setCurrentPages,
-        onPageChanged
-    } = props
+            users,
+            currentPages,
+            currentPage,
+            unfollow,
+            follow,
+            pages,
+            setCurrentPages,
+            onPageChanged
+        } = props
+
 
     return <div className={s.users}>
         {users.map((u, i) => <div key={i}>
@@ -45,14 +46,14 @@ const Users = (props) => {
             </div>
         )}
         <div className={s.pages}>
-            {pages[currentPages] !== undefined && currentPages - 1 === 0 ? '' :
+            {pages[currentPages] !== undefined && currentPages === 0 ? '' :
                 <span onClick={() => setCurrentPages(currentPages - 1)}>⇚</span>
             }
-            {pages[currentPages] !== undefined && pages[currentPages - 1].map((pageNumber, i) => {
+            {pages[currentPages] !== undefined && pages[currentPages].map((pageNumber, i) => {
                 return <span key={i} onClick={(e) => onPageChanged(pageNumber)}
                              className={currentPage === pageNumber ? s.selectedPage : ''}>{pageNumber}</span>
             })}
-            {pages[currentPages] !== undefined && currentPages === pages.length - 1 ? '' :
+            {pages[currentPages] !== undefined && currentPages === pages.length-1 ? '' :
                 <span onClick={() => setCurrentPages(currentPages + 1)}>⇛</span>
             }
         </div>
