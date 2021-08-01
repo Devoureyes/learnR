@@ -25,11 +25,7 @@ export default () => {
             })
     },[])
 
-    let [todos, setTodos] = React.useState([/*
-        {id: 1, completed: false, title: 'Купить молоко'},
-        {id: 2, completed: true, title: 'Купить хлеб'},
-        {id: 3, completed: false, title: 'Купить масло'},
-    */])
+    let [todos, setTodos] = React.useState([])
     const [loading, setLoading] = React.useState(true)
 
 
@@ -58,10 +54,10 @@ export default () => {
         <div>
             <h1 style={styles.h1}>Todo tutorial</h1>
             <Modal />
-            <React.Suspense fallback={<p>Loading...f</p>}>
+            <React.Suspense fallback={<p>Loading...</p>}>
                 <AddTodo onCreate={addTodo}/>
             </React.Suspense>
-            {loading && <Loader />}
+            {loading && <Loader type={1}/>}
             {todos.length ?
                 (<TodoList todos={todos} onToggle={toggleTodo}/>)
                 :

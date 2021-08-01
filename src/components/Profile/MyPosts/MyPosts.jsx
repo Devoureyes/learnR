@@ -9,7 +9,7 @@ const MyPosts = (p) => {
         updateNewPostText
     } = p
 
-    let postElements = posts.map((el) => <Post post={el}/>)
+    let postElements = posts.map((el,i) => <Post key={i} post={el}/>)
 
     let newPostEl = React.createRef();
 

@@ -1,0 +1,15 @@
+.main {
+    width: calc(100% - 30px);
+    height: 5vh;
+    border: 5px dashed;
+    border-radius: 15px;
+    display: flex;
+    padding: 5px;
+    margin: 5px;
+}
+.title {
+    width: 20%;
+}
+.desc {
+    text-align: center;
+}
