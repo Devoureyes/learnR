@@ -7,10 +7,10 @@ import Loader from "../todo/Loader";
 
 const Profile = (p) => {
     return <div>
-            <ProfileInfo profile={p.profile}/>
-            <Slideshow/>
-            {/*<MyPostsContainer />*/}
-        </div>
+        <ProfileInfo profile={p.profile}/>
+        <Slideshow/>
+        {/*<MyPostsContainer />*/}
+    </div>
 }
 
 export default Profile;

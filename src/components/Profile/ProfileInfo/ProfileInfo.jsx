@@ -2,6 +2,8 @@ import React from "react";
 import s from './ProfileInfo.module.css'
 import Loader from "../../todo/Loader";
 import Job from "../Job/Job";
+import userPhoto from '../../users/user.jpg'
+
 const ProfileInfo = (p) => {
     if (!p.profile) {
         return <Loader type={1}/>
@@ -24,7 +26,7 @@ const ProfileInfo = (p) => {
             </div>
             <div className={s.profile}>
                 <div>
-                    <img className={s.imgprofile} src={photos.large} alt=""/>
+                    <img className={s.imgprofile} src={photos.large ? photos.large : userPhoto} alt=""/>
                 </div>
                 <div className={s.stats}>
                     <p className={s.name}>{fullName}</p>

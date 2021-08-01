@@ -9,13 +9,12 @@ const Users = (props) => {
             users,
             currentPages,
             currentPage,
-            unfollow,
-            follow,
             pages,
             setCurrentPages,
-            onPageChanged
-        } = props
-
+            onPageChanged,
+            Follow,
+            unFollow
+    } = props
 
     return <div className={s.users}>
         {users.map((u, i) => <div key={i}>
@@ -28,22 +27,14 @@ const Users = (props) => {
                         </div>
                         <div>
                             {u.followed
-                                ? <button onClick={() => {
-                                    unfollow(u.id)
-                                }}>Unfollow</button>
-                                : <button onClick={() => {
-                                    follow(u.id)
-                                }}>Follow</button>}
+                                ? <button onClick={() => {unFollow(u.id)}}>Unfollow</button>
+                                : <button onClick={() => {Follow(u.id)}}>Follow</button>}
                         </div>
                     </span>
                 <span>
                         <span>
                             <div>{u.name}</div>
                             <div>{u.status}</div>
-                        </span>
-                        <span>
-                            <div>{'u.location.country'}</div>
-                            <div>{'u.location.city'}</div>
                         </span>
                     </span>
             </div>

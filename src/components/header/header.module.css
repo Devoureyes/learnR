@@ -62,3 +62,21 @@
     }
 }
 
+.login {
+    position: absolute;
+    right: 2%;
+    margin: 0;
+    padding: 0;
+    top: 50%;
+    transform: translate(0,-55%);
+    text-decoration: none;
+    transition: 0.1s;
+    user-select: none;
+}
+.linkLogin {
+    cursor: pointer;
+    text-decoration: none;
+}
+.login:hover {
+    transform: translate(0,-55%) scale(1.2) ;
+}
