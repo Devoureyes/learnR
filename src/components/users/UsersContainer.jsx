@@ -5,31 +5,31 @@ import {
     setTotalUsersCount,
     setCurrentPage,
     setUsers,
-    unfollow, setIsFetching
+    unfollow,
+    setIsFetching
 } from "../../redux/usersReducer";
 import React from "react";
 import axios from "axios";
 import Users from "./Users";
 import Loader from "../todo/Loader";
+import API_KEY from "../Constants";
+import getUsers from "../../api/api";
 
 class UsersContainer extends React.Component {
+
     componentDidMount() {
         this.props.setIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&take=${this.props.pageSize}`, {
-            withCredentials: true,
-            headers: {'API-KEY': 'b057d183-97e6-4b4b-a821-718b9dfb3361'}
-        })
-            .then(response => {
+        getUsers(this.props.currentPage, this.props.pageSize).then(r => {
                 this.props.setIsFetching(false)
-                this.props.setUsers(response.data.items)
-                this.props.setTotalUsersCount(response.data.totalCount)
+                this.props.setUsers(r.data.items)
+                this.props.setTotalUsersCount(r.data.totalCount)
             })
     }
 
     Follow = (id) => {
         axios.post('https://social-network.samuraijs.com/api/1.0/follow/' + id, {}, {
             withCredentials: true,
-            headers: {'API-KEY': 'b057d183-97e6-4b4b-a821-718b9dfb3361'}
+            headers: {'API-KEY': API_KEY}
         })
             .then(r => {
                 if (r.data.resultCode === 0)
@@ -39,7 +39,7 @@ class UsersContainer extends React.Component {
     unFollow = (id) => {
         axios.delete('https://social-network.samuraijs.com/api/1.0/follow/' + id,  {
             withCredentials: true,
-            headers: {'API-KEY': 'b057d183-97e6-4b4b-a821-718b9dfb3361'}
+            headers: {'API-KEY': API_KEY}
         })
             .then(r => {
                 if (r.data.resultCode === 0)
@@ -49,10 +49,7 @@ class UsersContainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber)
         this.props.setIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&take=${this.props.pageSize}`,{
-            headers: {'API-KEY': 'b057d183-97e6-4b4b-a821-718b9dfb3361'}
-        })
-            .then(response => {
+        getUsers(pageNumber, this.props.pageSize).then(response => {
                 this.props.setIsFetching(false)
                 this.props.setUsers(response.data.items)
             })
@@ -90,8 +87,6 @@ class UsersContainer extends React.Component {
 
         return isFetching ? <Loader type={3}/> : <Users pages={pages}
                                                         users={users}
-                                                        follow={follow}
-                                                        unfollow={unfollow}
                                                         currentPage={currentPage}
                                                         onPageChanged={onPageChanged}
                                                         currentPages={currentPages}
@@ -121,6 +116,7 @@ let mapStateToProps = (state) => {
         isFetching
     }
 }
+
 let mapDispatchToProps = {
     follow,
     unfollow,
@@ -130,6 +126,7 @@ let mapDispatchToProps = {
     setCurrentPages,
     setIsFetching,
 }
+
 
 // eslint-disable-next-line no-undef
 export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);

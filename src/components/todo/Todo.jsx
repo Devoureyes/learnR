@@ -15,28 +15,27 @@ const AddTodo = React.lazy(() => import('./AddTodo'))
 export default () => {
 
     React.useEffect(() => {
-        /*http://mepnew/api/test*/
-        /*https://jsonplaceholder.typicode.com/todos?_limit=10*/
         fetch('http://fearset.xyz/api/test')
             .then(response => response.json())
             .then(todos => {
                 setTodos(todos)
                 setLoading(false)
             })
-    },[])
+
+        return () => console.log(123);
+    },[]);
 
     let [todos, setTodos] = React.useState([])
     const [loading, setLoading] = React.useState(true)
 
-
-    function toggleTodo(id) {
+    const toggleTodo = React.useCallback(id => {
         setTodos(todos.map(todo => {
             if (todo.id === id) {
                 todo.completed = !todo.completed
             }
             return todo
-        }))
-    }
+        }));
+    }, [todos]);
 
     function removeTodo(id) {
         setTodos(todos.filter(todo => todo.id !== id))
