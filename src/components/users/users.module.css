@@ -1,6 +1,15 @@
 .users {
     padding: 3vh 0 0 3vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
 }
+.users > div {
+    margin: 5px;
+}
+
 .userPhoto {
 
 }

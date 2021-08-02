@@ -16,29 +16,33 @@ const Users = (props) => {
             unfollow,
             followingInProgress
     } = props
-    return <div className={s.users}>
-        {users.map((u, i) => <div key={i}>
+    return <div>
+        <div className={s.users}>
+            {users.map((u, i) => <div key={i}>
                     <span>
                         <div>
-                            <NavLink to={'/profile/'+u.id}>
+                            <NavLink to={'/profile/' + u.id}>
                                 <img className={s.userPhoto} width="100px"
-                                    src={u.photos.small != null ? u.photos.small : userPhoto} alt=""/>
+                                     src={u.photos.small != null ? u.photos.small : userPhoto} alt=""/>
                             </NavLink>
                         </div>
                         <div>
                             {u.followed
-                                ? <button disabled={followingInProgress.some(id=> id === u.id)} onClick={() => {unfollow(u.id)}}>Unfollow</button>
-                                : <button disabled={followingInProgress.some(id=> id === u.id)} onClick={() => {follow(u.id)}}>Follow</button>}
+                                ? <button disabled={followingInProgress.some(id => id === u.id)}
+                                          onClick={() => {unfollow(u.id)}}>Unfollow</button>
+                                : <button disabled={followingInProgress.some(id => id === u.id)}
+                                          onClick={() => {follow(u.id)}}>Follow</button>}
                         </div>
                     </span>
-                <span>
+                    <span>
                         <span>
                             <div>{u.name}</div>
                             <div>{u.status}</div>
                         </span>
                     </span>
-            </div>
-        )}
+                </div>
+            )}
+        </div>
         <div className={s.pages}>
             {pages[currentPages] !== undefined && currentPages === 0 ? '' :
                 <span onClick={() => setCurrentPages(currentPages - 1)}>⇚</span>
