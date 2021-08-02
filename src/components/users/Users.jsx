@@ -12,10 +12,10 @@ const Users = (props) => {
             pages,
             setCurrentPages,
             onPageChanged,
-            Follow,
-            unFollow
+            follow,
+            unfollow,
+            followingInProgress
     } = props
-
     return <div className={s.users}>
         {users.map((u, i) => <div key={i}>
                     <span>
@@ -27,8 +27,8 @@ const Users = (props) => {
                         </div>
                         <div>
                             {u.followed
-                                ? <button onClick={() => {unFollow(u.id)}}>Unfollow</button>
-                                : <button onClick={() => {Follow(u.id)}}>Follow</button>}
+                                ? <button disabled={followingInProgress.some(id=> id === u.id)} onClick={() => {unfollow(u.id)}}>Unfollow</button>
+                                : <button disabled={followingInProgress.some(id=> id === u.id)} onClick={() => {follow(u.id)}}>Follow</button>}
                         </div>
                     </span>
                 <span>

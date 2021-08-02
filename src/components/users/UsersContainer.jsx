@@ -6,53 +6,50 @@ import {
     setCurrentPage,
     setUsers,
     unfollow,
-    setIsFetching
+    toggleIsFetching,
+    toggleFollowingInProgress
 } from "../../redux/usersReducer";
 import React from "react";
-import axios from "axios";
 import Users from "./Users";
 import Loader from "../todo/Loader";
-import API_KEY from "../Constants";
-import getUsers from "../../api/api";
+import {userAPI, followAPI, unFollowAPI} from "../../api/api";
+
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.setIsFetching(true)
-        getUsers(this.props.currentPage, this.props.pageSize).then(r => {
-                this.props.setIsFetching(false)
-                this.props.setUsers(r.data.items)
-                this.props.setTotalUsersCount(r.data.totalCount)
-            })
+        this.props.toggleIsFetching(true)
+        userAPI(this.props.currentPage, this.props.pageSize).then(r => {
+            this.props.toggleIsFetching(false)
+            this.props.setUsers(r.items)
+            this.props.setTotalUsersCount(r.totalCount)
+        })
     }
 
-    Follow = (id) => {
-        axios.post('https://social-network.samuraijs.com/api/1.0/follow/' + id, {}, {
-            withCredentials: true,
-            headers: {'API-KEY': API_KEY}
-        })
-            .then(r => {
-                if (r.data.resultCode === 0)
-                    this.props.follow(id)
-            })
+    followUser = (id) => {
+        this.props.toggleFollowingInProgress(true, id)
+        followAPI(id).then(r => {
+                r && this.props.follow(id)
+                this.props.toggleFollowingInProgress(false, id)
+            }
+        )
     }
-    unFollow = (id) => {
-        axios.delete('https://social-network.samuraijs.com/api/1.0/follow/' + id,  {
-            withCredentials: true,
-            headers: {'API-KEY': API_KEY}
-        })
-            .then(r => {
-                if (r.data.resultCode === 0)
-                    this.props.unfollow(id)
-            })
+    unFollowUser = (id) => {
+        this.props.toggleFollowingInProgress(true, id)
+        unFollowAPI(id).then(r => {
+                r && this.props.unfollow(id)
+                this.props.toggleFollowingInProgress(false,id)
+            }
+        )
     }
+
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber)
-        this.props.setIsFetching(true)
-        getUsers(pageNumber, this.props.pageSize).then(response => {
-                this.props.setIsFetching(false)
-                this.props.setUsers(response.data.items)
-            })
+        this.props.toggleIsFetching(true)
+        userAPI(pageNumber, this.props.pageSize).then(r => {
+            this.props.toggleIsFetching(false)
+            this.props.setUsers(r.items)
+        })
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -68,11 +65,12 @@ class UsersContainer extends React.Component {
                 currentPages,
                 currentPage,
                 setCurrentPages,
-                isFetching
+                isFetching,
+                followingInProgress
             },
             onPageChanged,
-            Follow,
-            unFollow
+            followUser,
+            unFollowUser
         } = this
 
         let scrollPagesCount = Math.ceil(totalUsersCount / (pageSize * 10))
@@ -90,13 +88,14 @@ class UsersContainer extends React.Component {
                                                         currentPage={currentPage}
                                                         onPageChanged={onPageChanged}
                                                         currentPages={currentPages}
-                                                        Follow={Follow}
-                                                        unFollow={unFollow}
+                                                        follow={followUser}
+                                                        unfollow={unFollowUser}
+                                                        followingInProgress={followingInProgress}
                                                         setCurrentPages={setCurrentPages}/>
     }
 }
 
-let mapStateToProps = (state) => {
+let mstp = (state) => {
     const {
         usersPage: {
             users,
@@ -104,7 +103,8 @@ let mapStateToProps = (state) => {
             totalUsersCount,
             currentPage,
             currentPages,
-            isFetching
+            isFetching,
+            followingInProgress
         }
     } = state
     return {
@@ -113,20 +113,21 @@ let mapStateToProps = (state) => {
         totalUsersCount,
         currentPage,
         currentPages,
-        isFetching
+        isFetching,
+        followingInProgress
     }
 }
 
-let mapDispatchToProps = {
+let mdtp = {
     follow,
     unfollow,
     setUsers,
     setCurrentPage,
     setTotalUsersCount,
     setCurrentPages,
-    setIsFetching,
+    toggleIsFetching,
+    toggleFollowingInProgress
 }
 
-
 // eslint-disable-next-line no-undef
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mstp, mdtp)(UsersContainer);
