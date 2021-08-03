@@ -18,7 +18,7 @@ export const profileAPI =  {
 }
 
 export const userAPI = {
-    getUsers(currentPage = 1, pageSize = 25) {
+    getUsers(currentPage, pageSize) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(r => {return r.data})
     },
     follow(id) {

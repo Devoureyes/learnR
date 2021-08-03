@@ -74,6 +74,7 @@ export const getUsers = (currentPage, pageSize) => (dispatch) => {
         dispatch(toggleIsFetching(true))
         userAPI.getUsers(currentPage,pageSize).then(r => {
             dispatch(toggleIsFetching(false))
+            dispatch(setCurrentPage(currentPage))
             dispatch(setUsers(r.items))
             dispatch(setTotalUsersCount(r.totalCount))
         })
