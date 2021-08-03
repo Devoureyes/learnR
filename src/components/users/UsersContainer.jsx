@@ -10,7 +10,7 @@ import {
 import React from "react";
 import Users from "./Users";
 import Loader from "../todo/Loader";
-import {followAPI, unFollowAPI} from "../../api/api";
+import {userAPI} from "../../api/api";
 
 class UsersContainer extends React.Component {
 
@@ -20,7 +20,7 @@ class UsersContainer extends React.Component {
 
     followUser = (id) => {
         this.props.toggleFollowingInProgress(true, id)
-        followAPI(id).then(r => {
+        userAPI.follow(id).then(r => {
                 r && this.props.follow(id)
                 this.props.toggleFollowingInProgress(false, id)
             }
@@ -28,7 +28,7 @@ class UsersContainer extends React.Component {
     }
     unFollowUser = (id) => {
         this.props.toggleFollowingInProgress(true, id)
-        unFollowAPI(id).then(r => {
+        userAPI.unFollow(id).then(r => {
                 r && this.props.unfollow(id)
                 this.props.toggleFollowingInProgress(false,id)
             }

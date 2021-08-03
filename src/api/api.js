@@ -6,18 +6,21 @@ const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/'
 })
 
-export const userAPI = (currentPage, pageSize) => {
-    return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(r => {return r.data})
-}
-export const followAPI = (id) => {
-    return instance.post('follow/' + id, {}).then(r => {if (r.data.resultCode === 0) return true})
-}
-export const unFollowAPI = (id) => {
-    return instance.delete('follow/'+id).then(r => {if (r.data.resultCode === 0) return true})
-}
 export const AuthAPI = () => {
     return instance.get('auth/me').then(r => {return r.data})
 }
 export const profileAPI = (userId) => {
     return instance.get('profile/'+userId).then(r => {return r.data})
+}
+
+export const userAPI = {
+    getUsers(currentPage = 1, pageSize = 25) {
+        return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(r => {return r.data})
+    },
+    follow(id) {
+        return instance.post('follow/' + id, {}).then(r => {if (r.data.resultCode === 0) return true})
+    },
+    unFollow(id) {
+        return instance.delete('follow/' + id).then(r => {if (r.data.resultCode === 0) return true})
+    }
 }
