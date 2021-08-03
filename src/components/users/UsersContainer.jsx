@@ -2,23 +2,20 @@ import {connect} from "react-redux";
 import {
     follow,
     setCurrentPages,
-    setTotalUsersCount,
     setCurrentPage,
-    setUsers,
     unfollow,
-    toggleIsFetching,
     toggleFollowingInProgress,
-    getUsersThunk
+    getUsers
 } from "../../redux/usersReducer";
 import React from "react";
 import Users from "./Users";
 import Loader from "../todo/Loader";
-import {userAPI, followAPI, unFollowAPI} from "../../api/api";
+import {followAPI, unFollowAPI} from "../../api/api";
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getUsersThunk(this.props.currentPage, this.props.pageSize)
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     followUser = (id) => {
@@ -39,12 +36,7 @@ class UsersContainer extends React.Component {
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.setCurrentPage(pageNumber)
-        this.props.toggleIsFetching(true)
-        userAPI(pageNumber, this.props.pageSize).then(r => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(r.items)
-        })
+        this.props.getUsers(pageNumber,this.props.pageSize)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -116,13 +108,10 @@ let mstp = (state) => {
 let mdtp = {
     follow,
     unfollow,
-    setUsers,
     setCurrentPage,
-    setTotalUsersCount,
     setCurrentPages,
-    toggleIsFetching,
     toggleFollowingInProgress,
-    getUsersThunk
+    getUsers
 }
 
 // eslint-disable-next-line no-undef
