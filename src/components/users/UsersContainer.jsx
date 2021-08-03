@@ -7,7 +7,8 @@ import {
     setUsers,
     unfollow,
     toggleIsFetching,
-    toggleFollowingInProgress
+    toggleFollowingInProgress,
+    setPageSize
 } from "../../redux/usersReducer";
 import React from "react";
 import Users from "./Users";
@@ -78,7 +79,7 @@ class UsersContainer extends React.Component {
         for (let i = 0; i < scrollPagesCount; i++) {
             let x = []
             for (let j = 1; j <= 10; j++) {
-                i * 10 + j - 1 < totalUsersCount / 10 && x.push(i * 10 + j)
+                i * 10 + j-1 < totalUsersCount / pageSize && x.push(i * 10 + j)
             }
             pages.push(x)
         }
@@ -126,7 +127,8 @@ let mdtp = {
     setTotalUsersCount,
     setCurrentPages,
     toggleIsFetching,
-    toggleFollowingInProgress
+    toggleFollowingInProgress,
+    setPageSize
 }
 
 // eslint-disable-next-line no-undef

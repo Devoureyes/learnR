@@ -3,6 +3,7 @@ import s from "./users.module.css";
 import userPhoto from "./user.jpg";
 import PropTypes from "prop-types";
 import {NavLink} from "react-router-dom";
+import Select from 'react-select'
 
 const Users = (props) => {
     const {
@@ -14,7 +15,8 @@ const Users = (props) => {
             onPageChanged,
             follow,
             unfollow,
-            followingInProgress
+            followingInProgress,
+            setPageSize
     } = props
     return <div>
         <div className={s.users}>
@@ -43,6 +45,9 @@ const Users = (props) => {
                 </div>
             )}
         </div>
+        <div style={{width: '30%', margin: 'auto'}}>
+            <Sel setPageSize={setPageSize}/>
+        </div>
         <div className={s.pages}>
             {pages[currentPages] !== undefined && currentPages === 0 ? '' :
                 <span onClick={() => setCurrentPages(currentPages - 1)}>⇚</span>
@@ -58,6 +63,14 @@ const Users = (props) => {
     </div>
 }
 
+const Sel = ({setPageSize}) => {
+    let options = [
+        {value: 10, label: '10'},
+        {value: 25, label: '25'},
+        {value: 50, label: '50'}
+    ]
+    return <Select options={options}/>
+}
 
 Users.propTypes = {
     users: PropTypes.arrayOf(PropTypes.object),
