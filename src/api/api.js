@@ -7,7 +7,7 @@ const instance = axios.create({
 })
 
 export const userAPI = (currentPage, pageSize) => {
-    return instance.get(`users?page=${currentPage}&take=${pageSize}`).then(r => {return r.data})
+    return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(r => {return r.data})
 }
 export const followAPI = (id) => {
     return instance.post('follow/' + id, {}).then(r => {if (r.data.resultCode === 0) return true})

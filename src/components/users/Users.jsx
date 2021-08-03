@@ -14,8 +14,10 @@ const Users = (props) => {
             onPageChanged,
             follow,
             unfollow,
-            followingInProgress
+            followingInProgress,
     } = props
+
+
     return <div>
         <div className={s.users}>
             {users.map((u, i) => <div key={i}>
@@ -37,7 +39,7 @@ const Users = (props) => {
                     <span>
                         <span>
                             <div>{u.name}</div>
-                            <div>{u.status}</div>
+                            <div className={s.status}>{u.status}</div>
                         </span>
                     </span>
                 </div>
