@@ -10,29 +10,11 @@ import {
 import React from "react";
 import Users from "./Users";
 import Loader from "../todo/Loader";
-import {userAPI} from "../../api/api";
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize)
-    }
-
-    followUser = (id) => {
-        this.props.toggleFollowingInProgress(true, id)
-        userAPI.follow(id).then(r => {
-                r && this.props.follow(id)
-                this.props.toggleFollowingInProgress(false, id)
-            }
-        )
-    }
-    unFollowUser = (id) => {
-        this.props.toggleFollowingInProgress(true, id)
-        userAPI.unFollow(id).then(r => {
-                r && this.props.unfollow(id)
-                this.props.toggleFollowingInProgress(false,id)
-            }
-        )
     }
 
     onPageChanged = (pageNumber) => {
@@ -53,11 +35,11 @@ class UsersContainer extends React.Component {
                 currentPage,
                 setCurrentPages,
                 isFetching,
-                followingInProgress
+                followingInProgress,
+                follow,
+                unfollow
             },
             onPageChanged,
-            followUser,
-            unFollowUser
         } = this
 
         let scrollPagesCount = Math.ceil(totalUsersCount / (pageSize * 10))
@@ -75,8 +57,8 @@ class UsersContainer extends React.Component {
                                                         currentPage={currentPage}
                                                         onPageChanged={onPageChanged}
                                                         currentPages={currentPages}
-                                                        follow={followUser}
-                                                        unfollow={unFollowUser}
+                                                        follow={follow}
+                                                        unfollow={unfollow}
                                                         followingInProgress={followingInProgress}
                                                         setCurrentPages={setCurrentPages}/>
     }

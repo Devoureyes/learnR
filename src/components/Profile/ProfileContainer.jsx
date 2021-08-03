@@ -1,9 +1,8 @@
 import React from "react";
 import Profile from "./profile";
-import {addPostCreator, setUserProfile, updateNewPostTextCreator} from "../../redux/profileReducer";
+import {addPostCreator, getUserProfile, updateNewPostTextCreator} from "../../redux/profileReducer";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import {profileAPI} from "../../api/api";
 
 
 class ProfileContainer extends React.Component {
@@ -11,7 +10,7 @@ class ProfileContainer extends React.Component {
         let userId = this.props.match.params.userId
         if(!userId)
             userId = 18746;
-        profileAPI(userId).then(data => { this.props.setUserProfile(data)})
+        this.props.getUserProfile(userId)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -33,7 +32,7 @@ let mstp = (state) => {
 let mdtp = {
     addPostCreator,
     updateNewPostTextCreator,
-    setUserProfile
+    getUserProfile
 }
 
 let WithContainer = withRouter(ProfileContainer)

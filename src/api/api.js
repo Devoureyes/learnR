@@ -6,11 +6,15 @@ const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/'
 })
 
-export const AuthAPI = () => {
-    return instance.get('auth/me').then(r => {return r.data})
+export const AuthAPI = {
+    me() {
+        return instance.get('auth/me').then(r => {return r.data})
+    }
 }
-export const profileAPI = (userId) => {
-    return instance.get('profile/'+userId).then(r => {return r.data})
+export const profileAPI =  {
+    getProfile(userId) {
+        return instance.get('profile/' + userId).then(r => {return r.data})
+    }
 }
 
 export const userAPI = {
