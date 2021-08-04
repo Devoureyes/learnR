@@ -14,6 +14,7 @@ const Users = (props) => {
             setCurrentPages,
             onPageChanged,
             follow,
+            setPageSize,
             unfollow,
             followingInProgress,
     } = props

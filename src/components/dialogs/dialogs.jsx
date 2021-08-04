@@ -9,7 +9,7 @@ const Dialogs = (p) => {
         messages,
         newMessageBody,
         sendMessage,
-        updateNewMessageBody
+        updateNewMessageBody,
     } = p
 
     let dialogElements = names.map((el) => <DialogItem n={el.id} key={el.id} name={el.name}/>)
@@ -23,11 +23,11 @@ const Dialogs = (p) => {
         let text = e.target.value;
         updateNewMessageBody(text);
     }
-
     return (
         <div className={s.dialogs}>
             <div className={s.dialogs_items}>
                 {dialogElements}
+
             </div>
             <div className={s.messages}>
                 <div>{messageElements}</div>

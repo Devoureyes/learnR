@@ -5,11 +5,14 @@ import {
     setCurrentPage,
     unfollow,
     toggleFollowingInProgress,
-    getUsers
+    getUsers, setPageSize
 } from "../../redux/usersReducer";
 import React from "react";
 import Users from "./Users";
 import Loader from "../todo/Loader";
+import {WithAuthRedirect} from '../hoc/WithAuthRedirect';
+import {compose} from 'redux';
+
 
 class UsersContainer extends React.Component {
 
@@ -42,14 +45,14 @@ class UsersContainer extends React.Component {
             onPageChanged,
         } = this
 
-        let scrollPagesCount = Math.ceil(totalUsersCount / (pageSize * 10))
-        let pages = []
+        let scrollPagesCount = Math.ceil(totalUsersCount / (pageSize * 10));
+        let pages = [];
         for (let i = 0; i < scrollPagesCount; i++) {
-            let x = []
+            let x = [];
             for (let j = 1; j <= 10; j++) {
-                i * 10 + j - 1 < totalUsersCount / pageSize && x.push(i * 10 + j)
+                i * 10 + j - 1 < totalUsersCount / pageSize && x.push(i * 10 + j);
             }
-            pages.push(x)
+            pages.push(x);
         }
 
         return isFetching ? <Loader type={3}/> : <Users pages={pages}
@@ -59,8 +62,9 @@ class UsersContainer extends React.Component {
                                                         currentPages={currentPages}
                                                         follow={follow}
                                                         unfollow={unfollow}
+                                                        setPageSize={setPageSize}
                                                         followingInProgress={followingInProgress}
-                                                        setCurrentPages={setCurrentPages}/>
+                                                        setCurrentPages={setCurrentPages}/>;
     }
 }
 
@@ -75,7 +79,7 @@ let mstp = (state) => {
             isFetching,
             followingInProgress
         }
-    } = state
+    } = state;
     return {
         users,
         pageSize,
@@ -96,5 +100,5 @@ let mdtp = {
     getUsers
 }
 
-// eslint-disable-next-line no-undef
-export default connect(mstp, mdtp)(UsersContainer);
+
+export default compose(connect(mstp,mdtp),WithAuthRedirect)(UsersContainer)

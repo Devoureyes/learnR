@@ -2,7 +2,10 @@ import React from "react";
 import Profile from "./profile";
 import {addPostCreator, getUserProfile, updateNewPostTextCreator} from "../../redux/profileReducer";
 import {connect} from "react-redux";
-import {withRouter} from "react-router-dom";
+import {withRouter} from 'react-router-dom';
+import {WithAuthRedirect} from '../hoc/WithAuthRedirect';
+import {compose} from 'redux';
+
 
 
 class ProfileContainer extends React.Component {
@@ -17,9 +20,11 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
-        return <Profile {...this.props} profile={this.props.profile}/>
+        return <Profile {...this.props}/>
     }
 }
+
+
 
 let mstp = (state) => {
     const {
@@ -29,11 +34,15 @@ let mstp = (state) => {
     } = state
     return {profile}
 }
+
 let mdtp = {
     addPostCreator,
     updateNewPostTextCreator,
     getUserProfile
 }
 
-let WithContainer = withRouter(ProfileContainer)
-export default connect(mstp, mdtp)(WithContainer)
+export default compose(
+    connect(mstp, mdtp),
+    withRouter,
+    WithAuthRedirect,
+)(ProfileContainer)

@@ -7,6 +7,7 @@ import DialogsContainer from "./components/dialogs/dialogsContainer";
 import UsersContainer from "./components/users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/header/HeaderContainer";
+import Login from './components/login/Login';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
@@ -20,6 +21,9 @@ export default () => {
             <Route path='/messages' render={() => <DialogsContainer/>}/>
             <Route path='/profile/:userId?' render={() => <ProfileContainer />}/>
             <Route path='/users' render={() => <UsersContainer/>}/>
+            <Route path='/login' render={() => <Login />}/>
+            <img width="200px" src="skel.png" className="img1" />
+            <img width="200px" src="skel.png" className="img2" />
         </div>
     </div>
 }

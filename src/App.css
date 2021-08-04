@@ -8,7 +8,15 @@
 body {
     background-color: rgb(30, 30, 30);
 }
-
+.img1 {
+    transform: scale(-1,1);left: 0; bottom: 0;position: absolute; z-index: 0
+}
+.img2 {
+    right: 0; bottom: 0;position: absolute; z-index: 0
+}
+.content div {
+    z-index: 1;
+}
 .app-wrapper {
     margin: 0 auto;
     padding-bottom: 20px;
@@ -72,6 +80,7 @@ textarea {
     background-color: rgba(155, 155, 155, 0.5);
     border: 2px inset black;
     height: calc(100% + 60px);
+    position: relative;
 }
 
 .done {
