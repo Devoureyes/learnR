@@ -23,9 +23,6 @@ export default class ProfileStatus extends React.Component {
         })
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        this.props.status !== prevProps.status && this.setState({status:this.props.status})
-    }
     render() {
         const {
             activateEditMode,
