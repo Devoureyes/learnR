@@ -4,9 +4,21 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 //import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (p) => {
-    debugger
+    const {
+        profile,
+        status,
+        updateStatus,
+        getUserStatus,
+        getUserProfile,
+    }   = p
     return <div>
-        <ProfileInfo profile={p.profile} status={p.status}/>
+        <ProfileInfo
+            profile={profile}
+            getUserStatus={getUserStatus}
+            getUserProfile={getUserProfile}
+            status={status}
+            updateStatus={updateStatus}
+        />
         <Slideshow/>
         {/*<MyPostsContainer />*/}
     </div>

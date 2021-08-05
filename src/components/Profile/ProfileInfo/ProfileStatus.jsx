@@ -3,27 +3,38 @@ import s from './ProfileInfo.module.css';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default class ProfileStatus extends React.Component {
+
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
 
-    activateEditMode = () =>{
+    activateEditMode = (e) =>{
         this.setState({
-            editMode: !this.state.editMode
+            editMode: e,
+        })
+        if(e===false){
+            this.props.update(this.state.status)
+        }
+    }
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
         })
     }
 
     render() {
         const {
-            props: {
+            activateEditMode,
+            state: {
                 status
             },
-            activateEditMode
+            onStatusChange
         } = this
         return <div>
             {this.state.editMode
-                ? <input autoFocus={true} onBlur={activateEditMode} type="text" value={status}/>
-                : <span onClick={activateEditMode} className={s.status}>{status}</span>}
+                ? <input onChange={onStatusChange} autoFocus={true} onBlur={() => activateEditMode(false)} type="text" value={status}/>
+                : <span onClick={() => activateEditMode(true)} className={s.status}>{this.props.status}</span>}
         </div>;
     }
 }

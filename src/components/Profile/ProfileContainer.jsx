@@ -13,15 +13,16 @@ class ProfileContainer extends React.Component {
         let userId = this.props.match.params.userId
         if(!userId)
             userId = this.props.myId;
-        this.props.getUserProfile(userId)
         this.props.getUserStatus(userId)
+        this.props.getUserProfile(userId)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
     }
 
     render() {
-        return <Profile {...this.props}/>
+        console.log(this.props)
+        return <Profile {...this.props} updateStatus={this.props.updateStatus} status={this.props.status} profile={this.props.profile}/>
     }
 }
 
@@ -51,5 +52,4 @@ let mdtp = {
 export default compose(
     connect(mstp, mdtp),
     withRouter,
-    WithAuthRedirect,
 )(ProfileContainer)

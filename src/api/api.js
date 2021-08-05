@@ -16,10 +16,10 @@ export const profileAPI = {
         return instance.get('profile/' + userId).then(r => { return r.data })
     },
     getStatus(userId) {
-        return instance.get('profile/status/'+userId).then(r=>{return r.data})
+        return instance.get('profile/status/'+userId)
     },
     updateStatus(status) {
-        return instance.put('profile/status/',{status}).then(r=>{return r.data})
+        return instance.put('profile/status',{status})
     }
 }
 

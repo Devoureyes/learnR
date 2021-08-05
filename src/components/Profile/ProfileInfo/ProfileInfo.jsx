@@ -1,12 +1,14 @@
-import React from "react";
-import s from './ProfileInfo.module.css'
-import Loader from "../../todo/Loader";
-import Job from "../Job/Job";
-import userPhoto from '../../users/user.jpg'
-import ProfileStatus from './ProfileStatus'
-const ProfileInfo = (p) => {
-    if (!p.profile) {
-        return <Loader type={1}/>
+import React from 'react';
+import s from './ProfileInfo.module.css';
+import Loader from '../../todo/Loader';
+import Job from '../Job/Job';
+import userPhoto from '../../users/user.jpg';
+import ProfileStatus from './ProfileStatus';
+
+
+const ProfileInfo = (props) => {
+    if (!props.profile) {
+        return <Loader type={1}/>;
     }
     const {
         profile: {
@@ -17,8 +19,9 @@ const ProfileInfo = (p) => {
             lookingForAJobDescription,
             userId,
         },
+        updateStatus,
         status,
-    } = p
+    } = props;
     return <React.Fragment>
         <div className={s.profileInfo}>
             <div>
@@ -30,7 +33,7 @@ const ProfileInfo = (p) => {
                 </div>
                 <div className={s.stats}>
                     <p className={s.name}>{fullName}</p>
-                    <ProfileStatus status={status}/>
+                    <ProfileStatus update={updateStatus} status={status}/>
                     <ul className={s.ulp}>
                         <li>Facebook: {contacts.facebook}</li>
                         <li>Instagram: {contacts.instagram}</li>
@@ -50,7 +53,7 @@ const ProfileInfo = (p) => {
             </div>
         </div>
         {lookingForAJob ? <Job job={lookingForAJobDescription}/> : <div>Не ищу работу</div>}
-    </React.Fragment>
-}
+    </React.Fragment>;
+};
 
 export default ProfileInfo;
