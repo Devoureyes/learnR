@@ -76,7 +76,7 @@ const toggleIsFetching = isFetching => ({ type: TOGGLE_IS_FETCHING, isFetching }
 export const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentPage })
 export const setCurrentPages = currentPages => ({ type: SET_CURRENT_PAGES, currentPages })
 export const toggleFollowingInProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId })
-export const setPageSize = (pageSize) => ({ type: SET_PAGE_SIZE, pageSize })
+export const setPageSize = pageSize => ({ type: SET_PAGE_SIZE, pageSize })
 
 export const getUsers = (currentPage = 1 , pageSize = 25) => (dispatch) => {
     dispatch(toggleIsFetching(true))

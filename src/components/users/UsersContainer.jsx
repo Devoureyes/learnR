@@ -101,4 +101,4 @@ let mdtp = {
 }
 
 
-export default compose(connect(mstp,mdtp),WithAuthRedirect)(UsersContainer)
+export default compose(WithAuthRedirect,connect(mstp,mdtp))(UsersContainer)

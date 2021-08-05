@@ -9,7 +9,10 @@
 .stats {
     margin: 2vh 5vh 0 2vh;
 }
-
+.status {
+    cursor: pointer;
+    user-select: none;
+}
 .name {
     margin: 0;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import Profile from "./profile";
-import {addPostCreator, getUserProfile, updateNewPostTextCreator} from "../../redux/profileReducer";
+import {addPostCreator, getUserProfile,updateStatus, getUserStatus, updateNewPostTextCreator} from '../../redux/profileReducer';
 import {connect} from "react-redux";
 import {withRouter} from 'react-router-dom';
 import {WithAuthRedirect} from '../hoc/WithAuthRedirect';
@@ -12,8 +12,9 @@ class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId
         if(!userId)
-            userId = 18746;
+            userId = this.props.myId;
         this.props.getUserProfile(userId)
+        this.props.getUserStatus(userId)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -29,16 +30,22 @@ class ProfileContainer extends React.Component {
 let mstp = (state) => {
     const {
         profilePage: {
-            profile
+            profile,
+            status
+        },
+        authPage: {
+            id: myId
         }
     } = state
-    return {profile}
+    return {profile,myId,status}
 }
 
 let mdtp = {
     addPostCreator,
     updateNewPostTextCreator,
-    getUserProfile
+    getUserProfile,
+    getUserStatus,
+    updateStatus,
 }
 
 export default compose(

@@ -14,6 +14,12 @@ export const AuthAPI = {
 export const profileAPI = {
     getProfile(userId) {
         return instance.get('profile/' + userId).then(r => { return r.data })
+    },
+    getStatus(userId) {
+        return instance.get('profile/status/'+userId).then(r=>{return r.data})
+    },
+    updateStatus(status) {
+        return instance.put('profile/status/',{status}).then(r=>{return r.data})
     }
 }
 

@@ -22,8 +22,8 @@ export default () => {
             <Route path='/profile/:userId?' render={() => <ProfileContainer />}/>
             <Route path='/users' render={() => <UsersContainer/>}/>
             <Route path='/login' render={() => <Login />}/>
-            <img width="200px" src="skel.png" className="img1" />
-            <img width="200px" src="skel.png" className="img2" />
+            <img width="200px" src="skel.png" className="img1"  alt={''}/>
+            <img width="200px" src="skel.png" className="img2" alt={''}/>
         </div>
     </div>
 }

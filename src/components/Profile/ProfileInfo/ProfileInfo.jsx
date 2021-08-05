@@ -3,21 +3,21 @@ import s from './ProfileInfo.module.css'
 import Loader from "../../todo/Loader";
 import Job from "../Job/Job";
 import userPhoto from '../../users/user.jpg'
-
+import ProfileStatus from './ProfileStatus'
 const ProfileInfo = (p) => {
     if (!p.profile) {
         return <Loader type={1}/>
     }
     const {
         profile: {
-            aboutMe,
             photos,
             contacts,
             fullName,
             lookingForAJob,
             lookingForAJobDescription,
-            userId
-        }
+            userId,
+        },
+        status,
     } = p
     return <React.Fragment>
         <div className={s.profileInfo}>
@@ -30,7 +30,7 @@ const ProfileInfo = (p) => {
                 </div>
                 <div className={s.stats}>
                     <p className={s.name}>{fullName}</p>
-                    <p className={s.name}>{aboutMe}</p>
+                    <ProfileStatus status={status}/>
                     <ul className={s.ulp}>
                         <li>Facebook: {contacts.facebook}</li>
                         <li>Instagram: {contacts.instagram}</li>
