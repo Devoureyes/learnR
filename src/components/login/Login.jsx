@@ -1,5 +1,6 @@
 import React from "react";
 import s from './login.module.css'
+import {Field, reduxForm} from 'redux-form';
 
 const Login = props => {
     return <div className={s.loginRel}>
@@ -7,14 +8,14 @@ const Login = props => {
             <h1>Login</h1>
             <form>
                 <div>
-                    <input className={s.input} placeholder="login"/>
+                    <Field component={"input"} name={"login"} className={s.input} placeholder="Login"/>
                 </div>
                 <div>
-                    <input className={s.input} placeholder="password"/>
+                    <Field component={"input"} name={"password"} className={s.input} placeholder="Password"/>
                 </div>
                 <div className={s.label}>
                     <label>
-                        <input type="checkbox"/>Remember me
+                        <Field component={"input"} name={"rememberMe"} type="checkbox"/>Remember me
                     </label>
                 </div>
                 <div>
@@ -24,5 +25,8 @@ const Login = props => {
         </div>
     </div>
 }
+const LoginReduxForm = reduxForm({
+    form: 'login'
+})(Login)
 
-export default Login;
+export default LoginReduxForm;

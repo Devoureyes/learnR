@@ -25,9 +25,27 @@
 .input {
     height: 26px;
     margin: 5px 0;
+    border: none;
+    padding: 3px;
+    text-align: center;
+    border-radius: 15px;
+    border-width: 0;
+    outline: none;
+    transition: 0.3s;
+    font-size: medium;
+    cursor: pointer;
+}
+.input:focus {
+    transform: scale(1.05);
+    background: #f9cfff;
+    cursor: text;
 }
 .label {
     margin: 10px 0;
+    transition: .3s;
+}
+.label:hover {
+    transform: scale(1.05);
 }
 .myButton {
     box-shadow: 4px 6px 7px 0px #8a2a21;
