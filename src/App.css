@@ -123,8 +123,8 @@ textarea {
     text-decoration: line-through #8ae552;
 }
 
-button:hover {
-    background: #b0edff!important;
+.button:hover {
+    background: #123a2e !important;
 }
 
 .lds-ellipsis {

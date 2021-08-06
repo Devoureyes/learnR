@@ -4,6 +4,28 @@
 .errorLogin  {
     border: 2px solid red!important;
 }
+.formSumError {
+    animation: login-error ease-in 2s infinite reverse both running;
+    border: 2px solid #00ffd9;
+    color: #00ffd9;
+    background: #8a2a21;
+    padding: 5px 15px;
+    border-radius: 15px;
+}
+@keyframes login-error {
+    25% {
+        background: #8a2a21;
+        color: #00ffd9;
+    }
+    50% {
+        background: #f8ee55;
+        color: #ff0000;
+    }
+    75% {
+        background: #8a2a21;
+        color: #00ffd9;
+    }
+}
 .span {
     color: #ff7575;
     font-size: large;

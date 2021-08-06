@@ -18,7 +18,24 @@
         width: 100%;
     }
 }
+.logout {
+    box-shadow:inset 0px 39px 0px -24px #da5f32;
+    background-color: #ce2516;
+    border-radius:4px;
+    border:none;
+    display:inline-block;
+    cursor:pointer;
+    color: #000000;
+    font-size:15px;
+    padding:3px 8px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #b23e35;
+}
 
+.logout:active {
+    position:relative;
+    top:1px;
+}
 .name {
     font-family: Ember, serif;
     font-size: xxx-large;
