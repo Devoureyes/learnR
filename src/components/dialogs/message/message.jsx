@@ -1,3 +1,4 @@
+import React from 'react';
 import s from "./message.module.css";
 import PropTypes from "prop-types";
 

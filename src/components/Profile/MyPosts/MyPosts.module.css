@@ -11,3 +11,7 @@
     max-height: 10vh;
     margin: auto auto auto 3vh;
 }
+.posts_scroll {
+    display: flex;
+    flex-direction: column-reverse;
+}

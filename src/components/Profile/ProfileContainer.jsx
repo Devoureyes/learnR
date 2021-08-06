@@ -1,9 +1,9 @@
 import React from "react";
 import Profile from "./profile";
-import {addPostCreator, getUserProfile,updateStatus, getUserStatus, updateNewPostTextCreator} from '../../redux/profileReducer';
+import {getUserProfile,updateStatus, getUserStatus} from '../../redux/profileReducer';
 import {connect} from "react-redux";
 import {withRouter} from 'react-router-dom';
-import {WithAuthRedirect} from '../hoc/WithAuthRedirect';
+//import {WithAuthRedirect} from '../hoc/WithAuthRedirect';
 import {compose} from 'redux';
 
 
@@ -21,7 +21,6 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return <Profile {...this.props} updateStatus={this.props.updateStatus} status={this.props.status} profile={this.props.profile}/>
     }
 }
@@ -42,8 +41,6 @@ let mstp = (state) => {
 }
 
 let mdtp = {
-    addPostCreator,
-    updateNewPostTextCreator,
     getUserProfile,
     getUserStatus,
     updateStatus,

@@ -1,3 +1,4 @@
+import React from 'react';
 import s from "./dialogitem.module.css";
 import {NavLink} from "react-router-dom";
 import PropTypes from 'prop-types'

@@ -11,7 +11,7 @@
     -moz-box-shadow: 0px 6px 18px 11px rgba(144, 11, 11, 0.31);
     box-shadow: 0px 6px 18px 11px rgba(144, 11, 11, 0.31);
     display: flex;
-    z-index: 999;
+    z-index: 1006;
 }
 @media screen and (max-device-width: 767px) {
     .header {

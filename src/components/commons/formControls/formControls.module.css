@@ -1,0 +1,49 @@
+.error {
+    border: 2px solid red;
+}
+.errorLogin  {
+    border: 2px solid red!important;
+}
+.span {
+    color: #ff7575;
+    font-size: large;
+}
+.spanLogin {
+    color: #00ffd9;
+    font-size: large;
+}
+.textarea {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.textarea textarea {
+    outline: none;
+    transition: .3s;
+}
+.textarea textarea:hover {
+    transform: scale(1.05);
+}
+.login {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.loginInput {
+    height: 26px;
+    margin: 5px 0;
+    border: none;
+    padding: 3px;
+    text-align: center;
+    border-radius: 15px;
+    border-width: 0;
+    outline: none;
+    transition: 0.3s;
+    font-size: medium;
+    cursor: pointer;
+}
+.loginInput:focus {
+    transform: scale(1.05);
+    background: #f9cfff;
+    cursor: text;
+}

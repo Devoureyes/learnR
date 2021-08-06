@@ -1,7 +1,7 @@
 import React from "react"
 import Slideshow from "../sl";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-//import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (p) => {
     const {
@@ -11,7 +11,8 @@ const Profile = (p) => {
         getUserStatus,
         getUserProfile,
     }   = p
-    return <div>
+
+    return <div className="profile">
         <ProfileInfo
             profile={profile}
             getUserStatus={getUserStatus}
@@ -20,7 +21,7 @@ const Profile = (p) => {
             updateStatus={updateStatus}
         />
         <Slideshow/>
-        {/*<MyPostsContainer />*/}
+        <MyPostsContainer />
     </div>
 }
 

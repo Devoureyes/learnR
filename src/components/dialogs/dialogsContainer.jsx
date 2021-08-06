@@ -1,4 +1,4 @@
-import {sendMessage, updateNewMessageBody} from "../../redux/dialogsReducer";
+import {sendMessage} from "../../redux/dialogsReducer";
 import Dialogs from "./dialogs";
 import {connect} from "react-redux";
 import React from "react";
@@ -16,18 +16,16 @@ let mapStateToProps = (state) => {
     const {
         names,
         messages,
-        newMessageBody,
     } = state.messagesPage
 
     return {
         names,
         messages,
-        newMessageBody,
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {sendMessage, updateNewMessageBody}),
+    connect(mapStateToProps, {sendMessage}),
     WithAuthRedirect
 )(DialogsContainer)
 

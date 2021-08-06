@@ -50,7 +50,7 @@ export default () => {
     }
 
     return (<Context.Provider value={{removeTodo}}>
-        <div>
+        <div className="todo_page">
             <h1 style={styles.h1}>Todo tutorial</h1>
             <Modal />
             <React.Suspense fallback={<p>Loading...</p>}>

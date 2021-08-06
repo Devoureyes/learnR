@@ -52,7 +52,7 @@ const ProfileInfo = (props) => {
                 </div>
             </div>
         </div>
-        {lookingForAJob ? <Job job={lookingForAJobDescription}/> : <div>Не ищу работу</div>}
+        {lookingForAJob ? <Job job={lookingForAJobDescription}/> : <div className={s.work}>Не ищу работу</div>}
     </React.Fragment>;
 };
 

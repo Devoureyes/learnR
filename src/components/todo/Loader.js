@@ -14,24 +14,24 @@ export default (p) => {
         style={s}>
         {p.type === 1 &&
         <div className="lds-ellipsis">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <div/>
+                <div/>
+                <div/>
+                <div/>
         </div>
         }
         {p.type === 2 && <div className="lds-roller">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
         </div>
         }
-        {p.type === 3 && <div className="lds-hourglass"></div>
+        {p.type === 3 && <div className="lds-hourglass"/>
         }
     </div>
 }
