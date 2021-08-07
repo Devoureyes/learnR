@@ -5,23 +5,30 @@ import {
     setCurrentPage,
     unfollow,
     toggleFollowingInProgress,
-    getUsers, setPageSize
+    requestUsers, setPageSize
 } from "../../redux/usersReducer";
 import React from "react";
 import Users from "./Users";
 import Loader from "../todo/Loader";
 import {WithAuthRedirect} from '../hoc/WithAuthRedirect';
 import {compose} from 'redux';
-
+import {
+    getUsers,
+    getCurrentPage,
+    getCurrentPages, getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount
+} from '../../redux/userSelectors'
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize)
+        this.props.requestUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.getUsers(pageNumber,this.props.pageSize)
+        this.props.requestUsers(pageNumber,this.props.pageSize)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -68,7 +75,7 @@ class UsersContainer extends React.Component {
     }
 }
 
-let mstp = (state) => {
+/*let mstp = (state) => {
     const {
         usersPage: {
             users,
@@ -89,6 +96,17 @@ let mstp = (state) => {
         isFetching,
         followingInProgress
     }
+}*/
+let mstp = state => {
+    return {
+        users:getUsers(state),
+        pageSize:getPageSize(state),
+        totalUsersCount:getTotalUsersCount(state),
+        currentPage:getCurrentPage(state),
+        currentPages:getCurrentPages(state),
+        isFetching: getIsFetching(state),
+        followingInProgress:getFollowingInProgress(state)
+    }
 }
 
 let mdtp = {
@@ -97,7 +115,7 @@ let mdtp = {
     setCurrentPage,
     setCurrentPages,
     toggleFollowingInProgress,
-    getUsers
+    requestUsers
 }
 
 

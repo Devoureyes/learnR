@@ -21,8 +21,8 @@ class App extends React.Component {
 
     render() {
         if (!this.props.initialized) {
-            return <Loader type={1}/>
-        }
+            return <Loader type={2}/>
+        } else {
             return <div className="app-wrapper">
                 <HeaderContainer/>
                 <Navbar/>
@@ -38,6 +38,7 @@ class App extends React.Component {
                     <img width="200px" src="skel.png" className="img2" alt={''}/>
                 </div>
             </div>;
+        }
     }
 }
 const mstp = state => ({
