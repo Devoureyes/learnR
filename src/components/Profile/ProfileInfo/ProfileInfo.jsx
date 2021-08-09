@@ -4,6 +4,7 @@ import Loader from '../../todo/Loader';
 import Job from '../Job/Job';
 import userPhoto from '../../users/user.jpg';
 import ProfileStatus from './ProfileStatus';
+import ProfileStatusHook from "./ProfileStatusHook";
 
 
 const ProfileInfo = (props) => {
@@ -33,7 +34,7 @@ const ProfileInfo = (props) => {
                 </div>
                 <div className={s.stats}>
                     <p className={s.name}>{fullName}</p>
-                    <ProfileStatus update={updateStatus} status={status}/>
+                    <ProfileStatusHook update={updateStatus} status={status}/>
                     <ul className={s.ulp}>
                         <li>Facebook: {contacts.facebook}</li>
                         <li>Instagram: {contacts.instagram}</li>

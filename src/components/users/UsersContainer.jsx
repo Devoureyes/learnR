@@ -13,12 +13,11 @@ import Loader from "../todo/Loader";
 import {WithAuthRedirect} from '../hoc/WithAuthRedirect';
 import {compose} from 'redux';
 import {
-    getUsers,
     getCurrentPage,
     getCurrentPages, getFollowingInProgress,
     getIsFetching,
     getPageSize,
-    getTotalUsersCount
+    getTotalUsersCount, getUsersSelector
 } from '../../redux/userSelectors'
 
 class UsersContainer extends React.Component {
@@ -99,7 +98,7 @@ class UsersContainer extends React.Component {
 }*/
 let mstp = state => {
     return {
-        users:getUsers(state),
+        users:getUsersSelector(state),
         pageSize:getPageSize(state),
         totalUsersCount:getTotalUsersCount(state),
         currentPage:getCurrentPage(state),

@@ -45,6 +45,10 @@
 .label {
     margin: 10px 0;
     transition: .3s;
+    user-select: none;
+}
+label {
+    cursor: pointer;
 }
 .label:hover {
     transform: scale(1.05);
