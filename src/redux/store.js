@@ -6,8 +6,10 @@ import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
 import appReducer from './appReducer';
 import { reducer as formReducer } from 'redux-form';
-
+import createSagaMiddleware from 'redux-saga'
 import thunk from "redux-thunk";
+import rootSaga from '../api/Sagas'
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 let reducers = combineReducers({
     profilePage: profileReducer,
@@ -19,6 +21,10 @@ let reducers = combineReducers({
     app: appReducer
 })
 
-let store = createStore(reducers, applyMiddleware(thunk));
+const sagaMiddleware = createSagaMiddleware();
+
+let store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk,sagaMiddleware)));
+
+sagaMiddleware.run(rootSaga)
 window.store = store
 export default store;

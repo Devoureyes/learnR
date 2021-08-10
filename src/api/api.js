@@ -34,9 +34,9 @@ export const userAPI = {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(r => { return r.data })
     },
     follow(id) {
-        return instance.post('follow/' + id, {}).then(r => { if (r.data.resultCode === 0) return true })
+        return instance.post('follow/' + id, {})
     },
     unFollow(id) {
-        return instance.delete('follow/' + id).then(r => { if (r.data.resultCode === 0) return true })
+        return instance.delete('follow/' + id)
     }
 }

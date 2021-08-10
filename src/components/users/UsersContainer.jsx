@@ -74,28 +74,6 @@ class UsersContainer extends React.Component {
     }
 }
 
-/*let mstp = (state) => {
-    const {
-        usersPage: {
-            users,
-            pageSize,
-            totalUsersCount,
-            currentPage,
-            currentPages,
-            isFetching,
-            followingInProgress
-        }
-    } = state;
-    return {
-        users,
-        pageSize,
-        totalUsersCount,
-        currentPage,
-        currentPages,
-        isFetching,
-        followingInProgress
-    }
-}*/
 let mstp = state => {
     return {
         users:getUsersSelector(state),

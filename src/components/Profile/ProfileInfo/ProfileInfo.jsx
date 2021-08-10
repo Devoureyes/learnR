@@ -3,7 +3,6 @@ import s from './ProfileInfo.module.css';
 import Loader from '../../todo/Loader';
 import Job from '../Job/Job';
 import userPhoto from '../../users/user.jpg';
-import ProfileStatus from './ProfileStatus';
 import ProfileStatusHook from "./ProfileStatusHook";
 
 
@@ -44,12 +43,6 @@ const ProfileInfo = (props) => {
                     </ul>
                 </div>
                 <div className={s.spotify}>
-                    {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
-                    <iframe src="https://open.spotify.com/embed/track/3PHt7AdVhjIMS5Yw5RIZKU" width="300" height="80"
-                            frameBorder="0" allow="encrypted-media"/>
-                    {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
-                    <iframe src="https://open.spotify.com/embed/track/3XThhoyJ1t7mgRs66frPtr" width="300" height="80"
-                            frameBorder="0" allow="encrypted-media"/>
                 </div>
             </div>
         </div>

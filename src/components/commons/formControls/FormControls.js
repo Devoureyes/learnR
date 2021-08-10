@@ -14,7 +14,7 @@ export const TexareaTest = props => {
 
 export const Textarea = ({input, placeholder, meta: {touched, error, warning}}) => (<div>
     <div className={s.textarea}>
-        <textarea {...input}placeholder={placeholder} className={touched && error && s.error}/>
+        <textarea {...input}placeholder={placeholder} className={(touched && error && s.error) || undefined}/>
         {touched && ((error && <span className={s.span}>{error}</span>) || (warning && <span className={s.span}>{warning}</span>))}
     </div>
 </div>);

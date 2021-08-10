@@ -7,7 +7,6 @@ const SET_STATUS = 'SET_STATUS';
 
 let initialState = {
     profile: null,
-    id: 0,
     status: undefined,
     posts: [
         {id: 1, post: '1', likeCount: 0},
