@@ -1,0 +1,14 @@
+.films {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.onefilm {
+    width: 30%;
+    padding: 1.5%;
+}
+.img {
+    width: 100%;
+}

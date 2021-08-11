@@ -6,8 +6,8 @@ export const {
     searchFailure,
     setSerials,
 } = createActions({
-    SERIALS_REQUEST:payload=>payload,
-    SERIALS_SUCCESS:payload=>payload,
-    SERIALS_FAILURE:payload=>payload,
+    SEARCH_REQUEST:payload=>payload,
+    SEARCH_SUCCESS:payload=>payload,
+    SEARCH_FAILURE:payload=>payload,
     SET_SERIALS:payload=>payload
 })

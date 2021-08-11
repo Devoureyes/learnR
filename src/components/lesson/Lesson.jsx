@@ -5,20 +5,23 @@ import {connect} from 'react-redux';
 import {Textarea} from '../commons/formControls/FormControls';
 import {Field, reduxForm} from 'redux-form';
 import {maxLengthCreator} from '../../utils/validators';
-
+import OneFilm from "./OneFilm";
+import s from './lesson.module.css'
 
 let maxLength50 = maxLengthCreator(50);
 
 const Lesson = props => {
 
     let addNewSearch = values => {
-        /*props.searchRequest(values.newSearchBody);*/
+        props.searchRequest(values.newSearchBody);
     };
-
+    console.log(props.serials)
     return <div style={{padding: '3vh'}}>
         <h1>Поиск по сериалам</h1>
         <SearchReduxForm onSubmit={addNewSearch}/>
-        <div>{props.serials}</div>
+        <div className={s.films}>
+            {Array.isArray(props.serials) && props.serials.map((el,i) => (<OneFilm {...el}/>))}
+        </div>
     </div>;
 };
 
