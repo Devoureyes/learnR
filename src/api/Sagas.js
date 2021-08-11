@@ -9,7 +9,8 @@ import {
     setUsers,
     setUsersRequest
 } from '../actions/usersPageActions';
-import {userAPI} from './api';
+import {lessonAPI, userAPI} from './api';
+import {setSerials} from '../actions/lessonActions';
 
 
 function* followSaga({payload:userId}) {
@@ -51,9 +52,18 @@ function* setUsersSaga({payload: {currentPage,pageSize}}) {
         console.log(e);
     }
 }
+function* serialsSaga({payload}) {
+    try {
+        const response = yield lessonAPI.search(payload);
+        console.log(response)
+    } catch (e) {
+
+    }
+}
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function* () {
     yield takeEvery(setUsersRequest,setUsersSaga)
     yield takeEvery(follow, followSaga);
     yield takeEvery(unfollow, unfollowSaga);
+    yield takeEvery(setSerials,serialsSaga)
 }

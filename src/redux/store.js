@@ -11,6 +11,7 @@ import thunk from "redux-thunk";
 import rootSaga from '../api/Sagas'
 import {composeWithDevTools} from 'redux-devtools-extension';
 import testReducer from './testReducer';
+import serialsReducer from '../components/lesson/serialsReducer';
 
 let reducers = combineReducers({
     profilePage: profileReducer,
@@ -19,7 +20,8 @@ let reducers = combineReducers({
     usersPage: testReducer,
     authPage: authReducer,
     form: formReducer,
-    app: appReducer
+    app: appReducer,
+    serialsPage: serialsReducer
 })
 
 const sagaMiddleware = createSagaMiddleware();

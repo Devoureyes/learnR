@@ -10,6 +10,16 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
 const SET_PAGE_SIZE = 'SET_PAGE_SIZE'
 
+export const follow = userId => ({ type: FOLLOW, userId })
+export const unfollow = userId => ({ type: UNFOLLOW, userId })
+export const setUsers = users => ({ type: SET_USERS, users })
+const setTotalUsersCount = totalUsersCount => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount })
+const toggleIsFetching = isFetching => ({ type: TOGGLE_IS_FETCHING, isFetching })
+export const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentPage })
+export const setCurrentPages = currentPages => ({ type: SET_CURRENT_PAGES, currentPages })
+export const toggleIsFollowingProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId })
+export const setPageSize = pageSize => ({ type: SET_PAGE_SIZE, pageSize })
+
 let initialState = {
     users: [],
     pageSize: 32,
@@ -67,15 +77,7 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const follow = userId => ({ type: FOLLOW, userId })
-export const unfollow = userId => ({ type: UNFOLLOW, userId })
-export const setUsers = users => ({ type: SET_USERS, users })
-const setTotalUsersCount = totalUsersCount => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount })
-const toggleIsFetching = isFetching => ({ type: TOGGLE_IS_FETCHING, isFetching })
-export const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentPage })
-export const setCurrentPages = currentPages => ({ type: SET_CURRENT_PAGES, currentPages })
-export const toggleIsFollowingProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId })
-export const setPageSize = pageSize => ({ type: SET_PAGE_SIZE, pageSize })
+
 
 
 export const requestUsers = ({currentPage = 1, pageSize = 25}) => (dispatch) => {

@@ -39,13 +39,7 @@
     flex-direction: column;
     text-align: center;
 }
-.textarea textarea {
-    outline: none;
-    transition: .3s;
-}
-.textarea textarea:hover {
-    transform: scale(1.05);
-}
+
 .login {
     display: flex;
     flex-direction: column;

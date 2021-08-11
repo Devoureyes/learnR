@@ -11,7 +11,7 @@ export const {
     setCurrentPage,
     setCurrentPages,
     setUsers,
-    setUsersRequest,
+    setUsersRequest
 } = createActions(
     {
         FOLLOW:payload=>payload,
