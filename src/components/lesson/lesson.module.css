@@ -6,8 +6,20 @@
 }
 
 .onefilm {
+    position: relative;
     width: 30%;
-    padding: 1.5%;
+    margin: 15px auto;
+    transition: .2s;
+}
+.onefilm a {
+    text-decoration: none!important;
+    color: black;
+}
+.onefilm:hover {
+    transform: scale(1.02);
+}
+.onefilm a:visited {
+    color: inherit;
 }
 .img {
     width: 100%;

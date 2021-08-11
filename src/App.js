@@ -13,6 +13,8 @@ import {connect} from 'react-redux';
 import {initializeApp} from './redux/appReducer';
 import Loader from './components/todo/Loader';
 import Lesson from './components/lesson/Lesson';
+import OneFilm from "./components/lesson/OneFilm";
+import ShowOneFilm from "./components/lesson/ShowOneFilm";
 
 
 class App extends React.Component {
@@ -36,6 +38,7 @@ class App extends React.Component {
                     <Route path="/users" render={() => <UsersContainer/>}/>
                     <Route path="/login" render={() => <Login/>}/>
                     <Route path="/lesson" render={() => <Lesson/>}/>
+                    <Route path="/show/:id" render={() => <ShowOneFilm />}/>
                     <img width="200px" src="skel.png" className="img1" alt={''}/>
                     <img width="200px" src="skel.png" className="img2" alt={''}/>
                 </div>

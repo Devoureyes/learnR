@@ -3,26 +3,24 @@ import {handleActions} from 'redux-actions'
 
 const defaultState = {
     serials: undefined,
-    oneSerial:undefined
+    oneSerial:undefined,
+    searchText: '',
+    error: null
 }
 
 const serialsReducer = handleActions({
     [searchRequest]: (state,action) => ({
         ...state,
-        serials: action.payload
+        searchText: action.payload
     }),
     [searchFailure]: (state,action) => ({
         ...state,
-        serials: action.payload
+        error: action.payload
     }),
     [searchSuccess]: (state,action) => ({
         ...state,
-        serials: action.payload
+        serials: action.payload,
     }),
-    [setSerials]:(state,action) => ({
-        ...state,
-        serials: action.payload
-    })
 
 },defaultState)
 

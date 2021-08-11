@@ -10,7 +10,14 @@ import {
     setUsersRequest
 } from '../actions/usersPageActions';
 import {lessonAPI, userAPI} from './api';
-import {searchRequest, setSerials} from '../actions/lessonActions';
+import {
+    oneSerialFailure,
+    oneSerialRequest,
+    oneSerialSuccess,
+    searchFailure,
+    searchRequest,
+    searchSuccess
+} from '../actions/lessonActions';
 
 
 function* followSaga({payload:userId}) {
@@ -54,8 +61,18 @@ function* setUsersSaga({payload: {currentPage,pageSize}}) {
 function* serialsSaga({payload}) {
     try {
         const response = yield lessonAPI.search(payload);
-        yield put(setSerials(response))
+        yield put(searchSuccess(response))
     } catch (e) {
+        yield put(searchFailure('Something is wrong'))
+        console.log(e)
+    }
+}
+function* getSerialSaga({payload}) {
+    try {
+        const response = yield lessonAPI.show(payload);
+        yield put(oneSerialSuccess(response))
+    } catch (e) {
+        yield put(oneSerialFailure('Something is wrong'))
         console.log(e)
     }
 }
@@ -65,4 +82,5 @@ export default function* () {
     yield takeEvery(follow, followSaga);
     yield takeEvery(unfollow, unfollowSaga);
     yield takeEvery(searchRequest,serialsSaga)
+    yield takeEvery(oneSerialRequest,getSerialSaga)
 }
