@@ -1,7 +1,13 @@
-import { createActions} from 'redux-actions';
+import { createActions } from 'redux-actions';
 
 export const {
-    setSerials
+    searchRequest,
+    searchSuccess,
+    searchFailure,
+    setSerials,
 } = createActions({
+    SERIALS_REQUEST:payload=>payload,
+    SERIALS_SUCCESS:payload=>payload,
+    SERIALS_FAILURE:payload=>payload,
     SET_SERIALS:payload=>payload
 })

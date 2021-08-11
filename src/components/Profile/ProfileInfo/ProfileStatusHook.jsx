@@ -19,7 +19,8 @@ const ProfileStatusHook = ({update, status}) => {
 
     return <div>
       {editMode
-          ? <input onChange={(e) => setStatusNew(e.currentTarget.value)} autoFocus={true} onBlur={deactivateEditMode} type="text" value={statusNew}/>
+          ? <input onChange={(e) => setStatusNew(e.currentTarget.value)}
+                   autoFocus={true} onBlur={deactivateEditMode} type="text" value={statusNew}/>
           : <span onClick={() => setEditMode(true)} className={s.status}>{status}</span>}
   </div>
 }

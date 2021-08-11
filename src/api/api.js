@@ -43,15 +43,15 @@ export const userAPI = {
 };
 export const lessonAPI = {
     search(query) {
-        fetch(`http://api.tvmaze.com/search/shows?q=${query}`, {
+        return fetch(`http://api.tvmaze.com/search/shows?q=${query}`, {
             method: 'GET',
             mode: 'cors',
         })
             .then(response => response.json())
-            .then(shows => {console.log(shows)}/*shows.map(show => show.show)*/);
+            .then(shows => shows.map(show => show.show));
     },
     show(showId) {
-        fetch(`http://api.tvmaze.com/shows/${showId}?embed=cast`, {
+        return fetch(`http://api.tvmaze.com/shows/${showId}?embed=cast`, {
             method: 'GET',
             mode: 'cors',
         }).then(response => response.json());

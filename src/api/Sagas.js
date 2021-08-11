@@ -10,12 +10,11 @@ import {
     setUsersRequest
 } from '../actions/usersPageActions';
 import {lessonAPI, userAPI} from './api';
-import {setSerials} from '../actions/lessonActions';
+import {searchRequest, setSerials} from '../actions/lessonActions';
 
 
 function* followSaga({payload:userId}) {
     try {
-        /*yield put(toggleFollowingInProgress(true, userId));*/
         yield put(toggleIsFollowingProgress({isFetching:true, userId:userId}));
         const {data: {resultCode}} = yield call(userAPI.follow, userId);
         if (resultCode === 0) {
@@ -55,9 +54,9 @@ function* setUsersSaga({payload: {currentPage,pageSize}}) {
 function* serialsSaga({payload}) {
     try {
         const response = yield lessonAPI.search(payload);
-        console.log(response)
+        yield put(setSerials(response))
     } catch (e) {
-
+        console.log(e)
     }
 }
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -65,5 +64,5 @@ export default function* () {
     yield takeEvery(setUsersRequest,setUsersSaga)
     yield takeEvery(follow, followSaga);
     yield takeEvery(unfollow, unfollowSaga);
-    yield takeEvery(setSerials,serialsSaga)
+    yield takeEvery(searchRequest,serialsSaga)
 }
