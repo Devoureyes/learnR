@@ -1,27 +1,28 @@
 import React from 'react';
 import {searchRequest, searchSuccess, searchFailure} from '../../actions/lessonActions';
-import {getSerials} from './serialsReducer';
+import {getFetch, getSerials} from './serialsReducer';
 import {connect} from 'react-redux';
 import {Textarea} from '../commons/formControls/FormControls';
 import {Field, reduxForm} from 'redux-form';
 import {maxLengthCreator} from '../../utils/validators';
 import OneFilm from "./OneFilm";
 import s from './lesson.module.css'
+import Loader from "../todo/Loader";
 
 let maxLength50 = maxLengthCreator(50);
 
 const Lesson = props => {
 
+    console.log(props)
     let addNewSearch = values => {
         props.searchRequest(values.newSearchBody);
     };
-    console.log(props.serials)
-    return <div style={{padding: '3vh'}}>
+    return <div className={s.lesson}>
         <h1>Поиск по сериалам</h1>
         <SearchReduxForm onSubmit={addNewSearch}/>
-        <div className={s.films}>
-            {Array.isArray(props.serials) && props.serials.map((el,i) => (<OneFilm {...el}/>))}
-        </div>
+        {props.fetch ? <Loader type={1} /> : <div className={s.films}>
+            {Array.isArray(props.serials) && props.serials.map((el, i) => (<OneFilm key={i} {...el}/>))}
+        </div>}
     </div>;
 };
 
@@ -37,7 +38,8 @@ const SearchReduxForm = reduxForm({
 })(SearchForm);
 
 const mapStateToProps = state => ({
-    serials: getSerials(state)
+    serials: getSerials(state),
+    fetch: getFetch(state)
 });
 
 const mapDispatchToProps = {

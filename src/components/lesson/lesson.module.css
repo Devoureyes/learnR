@@ -1,3 +1,9 @@
+.lesson {
+    padding: 3vh;
+    z-index: 104;
+    background: rgba(0,0,0,0);
+}
+
 .films {
     display: flex;
     flex-direction: row;

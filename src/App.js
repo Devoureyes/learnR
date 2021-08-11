@@ -13,7 +13,6 @@ import {connect} from 'react-redux';
 import {initializeApp} from './redux/appReducer';
 import Loader from './components/todo/Loader';
 import Lesson from './components/lesson/Lesson';
-import OneFilm from "./components/lesson/OneFilm";
 import ShowOneFilm from "./components/lesson/ShowOneFilm";
 
 

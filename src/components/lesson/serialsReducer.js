@@ -1,30 +1,52 @@
-import {searchFailure, searchRequest, searchSuccess, setSerials} from '../../actions/lessonActions';
+import {
+    searchFailure, searchRequest, searchSuccess,
+oneSerialSuccess,oneSerialFailure,oneSerialRequest
+} from '../../actions/lessonActions';
 import {handleActions} from 'redux-actions'
 
 const defaultState = {
     serials: undefined,
-    oneSerial:undefined,
+    oneSerial: undefined,
     searchText: '',
-    error: null
+    error: null,
+    fetch: false,
 }
 
 const serialsReducer = handleActions({
-    [searchRequest]: (state,action) => ({
+    [searchRequest]: (state, action) => ({
         ...state,
-        searchText: action.payload
+        searchText: action.payload,
+        fetch: true
     }),
-    [searchFailure]: (state,action) => ({
+    [searchFailure]: (state, action) => ({
         ...state,
-        error: action.payload
+        error: action.payload,
+        fetch: false
     }),
-    [searchSuccess]: (state,action) => ({
+    [searchSuccess]: (state, action) => ({
         ...state,
         serials: action.payload,
+        fetch: false
+    }),
+    [oneSerialRequest]: (state,action) => ({
+        ...state,
+        fetch: true
+    }),
+    [oneSerialSuccess]: (state,action) => ({
+        ...state,
+        oneSerial: action.payload,
+        fetch: false
+    }),
+    [oneSerialFailure]: (state,action) => ({
+        ...state,
+        error: action.payload,
+        fetch: false
     }),
 
-},defaultState)
+}, defaultState)
 
 export const getSerials = state => state.serialsPage.serials
-export const showSerial = state => state.serialsPage.oneSerial
+export const getOneSerial = state => state.serialsPage.oneSerial
+export const getFetch = state => state.serialsPage.fetch
 
 export default serialsReducer;
