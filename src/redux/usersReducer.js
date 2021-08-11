@@ -74,39 +74,17 @@ const setTotalUsersCount = totalUsersCount => ({ type: SET_TOTAL_USERS_COUNT, to
 const toggleIsFetching = isFetching => ({ type: TOGGLE_IS_FETCHING, isFetching })
 export const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentPage })
 export const setCurrentPages = currentPages => ({ type: SET_CURRENT_PAGES, currentPages })
-export const toggleFollowingInProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId })
+export const toggleIsFollowingProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId })
 export const setPageSize = pageSize => ({ type: SET_PAGE_SIZE, pageSize })
 
 
-
-export const requestUsers = (currentPage = 1 , pageSize = 25) => (dispatch) => {
+export const requestUsers = ({currentPage = 1, pageSize = 25}) => (dispatch) => {
     dispatch(toggleIsFetching(true))
     userAPI.getUsers(currentPage, pageSize).then(r => {
         dispatch(toggleIsFetching(false))
         dispatch(setCurrentPage(currentPage))
-        dispatch(setUsers(r.items))
-        dispatch(setTotalUsersCount(r.totalCount))
+        dispatch(setUsers(r.data.items))
+        dispatch(setTotalUsersCount(r.data.totalCount))
     })
 }
-/*export const follow = id => {
-    return dispatch => {
-        dispatch(toggleFollowingInProgress(true, id));
-        userAPI.follow(id)
-            .then(r => {
-                r && dispatch(followSuccess(id));
-                dispatch(toggleFollowingInProgress(false, id))
-            })
-    }
-};
-export const unfollow = id => {
-    return dispatch => {
-        dispatch(toggleFollowingInProgress(true, id));
-        userAPI.unFollow(id)
-            .then(r => {
-                r && dispatch(unfollowSuccess(id));
-                dispatch(toggleFollowingInProgress(false, id))
-            })
-    }
-}*/
-
 export default usersReducer;

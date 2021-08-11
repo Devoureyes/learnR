@@ -1,12 +1,16 @@
 import {connect} from "react-redux";
+
+
 import {
     follow,
-    setCurrentPages,
-    setCurrentPage,
     unfollow,
-    toggleFollowingInProgress,
-    requestUsers, setPageSize
-} from "../../redux/usersReducer";
+    setPageSize,
+    toggleIsFollowingProgress,
+    setCurrentPage,
+    setCurrentPages,
+    setUsersRequest,
+    setTotalUsersCount
+} from '../../actions/usersPageActions'
 import React from "react";
 import Users from "./Users";
 import Loader from "../todo/Loader";
@@ -17,17 +21,27 @@ import {
     getCurrentPages, getFollowingInProgress,
     getIsFetching,
     getPageSize,
-    getTotalUsersCount, getUsersSelector
-} from '../../redux/userSelectors'
+    getTotalUsersCount, getUsers,
+} from '../../redux/testReducer';
+
+
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize)
+        const payload = {
+            currentPage: this.props.currentPage,
+            pageSize: this.props.pageSize
+        }
+        this.props.setUsersRequest(payload)
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.requestUsers(pageNumber,this.props.pageSize)
+        const payload = {
+            currentPage: pageNumber,
+            pageSize: this.props.pageSize
+        }
+        this.props.setUsersRequest(payload)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -50,7 +64,6 @@ class UsersContainer extends React.Component {
             },
             onPageChanged,
         } = this
-
         let scrollPagesCount = Math.ceil(totalUsersCount / (pageSize * 10));
         let pages = [];
         for (let i = 0; i < scrollPagesCount; i++) {
@@ -60,7 +73,6 @@ class UsersContainer extends React.Component {
             }
             pages.push(x);
         }
-
         return isFetching ? <Loader type={3}/> : <Users pages={pages}
                                                         users={users}
                                                         currentPage={currentPage}
@@ -76,7 +88,7 @@ class UsersContainer extends React.Component {
 
 let mstp = state => {
     return {
-        users:getUsersSelector(state),
+        users:getUsers(state),
         pageSize:getPageSize(state),
         totalUsersCount:getTotalUsersCount(state),
         currentPage:getCurrentPage(state),
@@ -91,8 +103,9 @@ let mdtp = {
     unfollow,
     setCurrentPage,
     setCurrentPages,
-    toggleFollowingInProgress,
-    requestUsers
+    toggleIsFollowingProgress,
+    setUsersRequest,
+    setTotalUsersCount
 }
 
 

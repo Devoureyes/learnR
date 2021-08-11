@@ -31,7 +31,7 @@ export const profileAPI = {
 
 export const userAPI = {
     getUsers(currentPage, pageSize) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(r => { return r.data })
+        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
     },
     follow(id) {
         return instance.post('follow/' + id, {})
