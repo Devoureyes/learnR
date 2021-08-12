@@ -8,7 +8,7 @@ import s from "./lesson.module.css";
 import Loader from "../todo/Loader";
 
 
-const ShowOneFilm = props => {
+const ShowOneFilm = React.memo(props => {
     const {
         match: {
             params: {
@@ -22,14 +22,16 @@ const ShowOneFilm = props => {
             summary,
             genres,
             status
-        }
+        },
+        fetch,
+        oneSerialRequest
     } = props
     console.log(props)
     React.useEffect(() => {
-        props.oneSerialRequest(id)
-    },[id])
+        oneSerialRequest(id)
+    },[id,oneSerialRequest])
 
-    return props.fetch ? <Loader type={1} /> : <div className={s.showOneFilm}>
+    return fetch ? <Loader type={1} /> : <div className={s.showOneFilm}>
         <div className={s.showOneFilmTitle_Img}>
             <div className={s.showOneFilmImg}><img alt={''} className={s.img}
                                                    src={image !== null ? image.original : 'http://underscoremusic.co.uk/site/wp-content/uploads/2014/05/no-poster.jpg'}/>
@@ -45,7 +47,7 @@ const ShowOneFilm = props => {
             <div style={{color: 'white'}} dangerouslySetInnerHTML={{__html: summary}}/>
         </div>
     </div>
-}
+});
 
 
 const mstp = state => ({

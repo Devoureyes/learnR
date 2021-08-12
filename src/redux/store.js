@@ -12,6 +12,8 @@ import rootSaga from '../api/Sagas'
 import {composeWithDevTools} from 'redux-devtools-extension';
 import testReducer from './testReducer';
 import serialsReducer from '../components/lesson/serialsReducer';
+import github_reducer from '../components/githubLesson/github_reducer';
+import auth_reducer from '../components/githubLesson/login/auth_reducer';
 
 let reducers = combineReducers({
     profilePage: profileReducer,
@@ -21,7 +23,9 @@ let reducers = combineReducers({
     authPage: authReducer,
     form: formReducer,
     app: appReducer,
-    serialsPage: serialsReducer
+    serialsPage: serialsReducer,
+    github_reducer,
+    auth_reducer,
 })
 
 const sagaMiddleware = createSagaMiddleware();

@@ -1,4 +1,4 @@
-import {takeEvery, call, put} from 'redux-saga/effects';
+import {takeEvery, call, put, takeLatest} from 'redux-saga/effects';
 import {
     follow,
     unfollow,
@@ -19,6 +19,10 @@ import {
     searchSuccess
 } from '../actions/lessonActions';
 
+import authGitSaga from '../components/githubLesson/login/authGitSaga';
+import {authorize} from '../components/githubLesson/login/auth_actions';
+import {setUserRequest} from '../components/githubLesson/github_actions';
+import githubSaga from '../components/githubLesson/git_saga';
 
 function* followSaga({payload:userId}) {
     try {
@@ -61,7 +65,14 @@ function* setUsersSaga({payload: {currentPage,pageSize}}) {
 function* serialsSaga({payload}) {
     try {
         const response = yield lessonAPI.search(payload);
-        yield put(searchSuccess(response))
+
+        if (response.status >= 200 && response.status < 400) {
+            const responseJson = yield response.json()
+            const shows = responseJson.map(({show}) => show)
+            yield put(searchSuccess(shows))
+        } else {
+            yield put(searchFailure('Something is wrong'))
+        }
     } catch (e) {
         yield put(searchFailure('Something is wrong'))
         console.log(e)
@@ -70,12 +81,18 @@ function* serialsSaga({payload}) {
 function* getSerialSaga({payload}) {
     try {
         const response = yield lessonAPI.show(payload);
-        yield put(oneSerialSuccess(response))
+        if (response.status >= 200 && response.status < 400) {
+            const responseJson = yield response.json()
+            yield put(oneSerialSuccess(responseJson))
+        } else {
+            yield put(oneSerialFailure('Something is wrong'))
+        }
     } catch (e) {
         yield put(oneSerialFailure('Something is wrong'))
         console.log(e)
     }
 }
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function* () {
     yield takeEvery(setUsersRequest,setUsersSaga)
@@ -83,4 +100,6 @@ export default function* () {
     yield takeEvery(unfollow, unfollowSaga);
     yield takeEvery(searchRequest,serialsSaga)
     yield takeEvery(oneSerialRequest,getSerialSaga)
+    yield takeLatest(authorize,authGitSaga)
+    yield takeEvery(setUserRequest,githubSaga)
 }

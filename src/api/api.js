@@ -46,14 +46,42 @@ export const lessonAPI = {
         return fetch(`http://api.tvmaze.com/search/shows?q=${query}`, {
             method: 'GET',
             mode: 'cors',
-        })
-            .then(response => response.json())
-            .then(shows => shows.map(show => show.show))
+        });
+        // .then(response => response.json())
+        // .then(shows => shows.map(show => show.show))
     },
     show(showId) {
         return fetch(`http://api.tvmaze.com/shows/${showId}?embed=cast`, {
             method: 'GET',
             mode: 'cors',
-        }).then(response => response.json());
+        });
     }
 };
+
+const github = axios.create({
+    baseURL: 'https://api.github.com/'
+});
+
+export const setTokenApi = access_token => {
+    github.defaults.params = {access_token};
+};
+
+export const clearTokenApi = () => {
+    github.defaults.params = {access_token: undefined};
+};
+
+export const githubAPI = {
+    getUserInformation(login) {
+        return github(`users/${login}`);
+    },
+    getUserFollowers(login) {
+        return github(`users/${login}/followers?pages=1&per_page=100`);
+    },
+    getUserRepos(login) {
+        return github(`users/${login}/repos`);
+    },
+    getTokenOwner() {
+        return github('user');
+    }
+};
+

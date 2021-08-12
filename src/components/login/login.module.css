@@ -20,6 +20,19 @@
     border-radius: 50px;
     padding: 15px;
 }
+.loginGit {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    z-index: 102;
+    background: #449481;
+    width: 300px;
+    border-radius: 50px;
+    padding: 15px;
+}
 
 .login > div {
     z-index: 102;

@@ -12,6 +12,7 @@ const Navbar = () => {
                 <li><NavLink className={s.itemnav} activeClassName={s.active} to="/todo">Todo</NavLink></li>
                 <li><NavLink className={s.itemnav} activeClassName={s.active} to="/settings">Settings</NavLink></li>
                 <li><NavLink className={s.itemnav} style={{fontSize:'22px',color:'#000000'}} activeClassName={s.active} to="/lesson">Lesson</NavLink></li>
+                <li><NavLink className={s.itemnav} style={{fontSize:'22px',color:'#000000'}} activeClassName={s.active} to="/github">GitHubLesson</NavLink></li>
             </ul>
             <div className={s.loader}>
                 <span><img

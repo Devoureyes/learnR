@@ -7,25 +7,27 @@ import {handleActions} from 'redux-actions'
 const defaultState = {
     serials: undefined,
     oneSerial: {image:null,name:null,officialSite:null,summary:null,genres:null,status:null},
-    searchText: '',
-    error: null,
+    error: '',
     fetch: false,
+    searchText: '',
 }
 
 const serialsReducer = handleActions({
     [searchRequest]: (state, action) => ({
         ...state,
-        searchText: action.payload,
-        fetch: true
+        fetch: true,
+        searchText: action.payload
     }),
     [searchFailure]: (state, action) => ({
         ...state,
+        serials: undefined,
         error: action.payload,
         fetch: false
     }),
     [searchSuccess]: (state, action) => ({
         ...state,
         serials: action.payload,
+        error: '',
         fetch: false
     }),
     [oneSerialRequest]: (state,action) => ({
@@ -48,5 +50,6 @@ const serialsReducer = handleActions({
 export const getSerials = state => state.serialsPage.serials
 export const getOneSerial = state => state.serialsPage.oneSerial
 export const getFetch = state => state.serialsPage.fetch
+export const getError = state => state.serialsPage.error
 
 export default serialsReducer;

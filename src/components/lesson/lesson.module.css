@@ -3,7 +3,28 @@
     z-index: 104;
     background: rgba(0,0,0,0);
 }
-
+.lesson > form {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+.lesson > form > button {
+    margin: 5px 10px;
+    border-radius: 50px;
+    border-inline: none;
+    border: none;
+    transition: .2s;
+}
+.lesson > form > button:hover {
+    background: #97ffee;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.h1 {
+    width: 100%;
+    text-align: center;
+}
 .films {
     display: flex;
     flex-direction: row;
