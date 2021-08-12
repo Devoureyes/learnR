@@ -16,6 +16,7 @@
     width: 30%;
     margin: 15px auto;
     transition: .2s;
+    text-align: center;
 }
 .onefilm a {
     text-decoration: none!important;
@@ -29,4 +30,29 @@
 }
 .img {
     width: 100%;
+}
+.showOneFilmTitle_Img {
+    display: flex;
+    flex-direction: row;
+}
+.showOneFilmImg {
+    width: 50%;
+}
+.showOneFilmTite {
+    width: 50%;
+    margin: 6% auto;
+}
+.showOneFilmImg > img{
+    width: 50%;
+    margin: 6% 25%;
+}
+.showOneFilmSummary {
+    text-align: center;
+    margin: 5%;
+}
+.showOneFilmTite > div {
+    color: #35e5c5;
+}
+.showOneFilmTite span {
+    color: #ffffff !important;
 }

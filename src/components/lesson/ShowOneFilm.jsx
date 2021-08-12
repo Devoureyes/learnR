@@ -9,7 +9,6 @@ import Loader from "../todo/Loader";
 
 
 const ShowOneFilm = props => {
-    console.log(props)
     const {
         match: {
             params: {
@@ -20,20 +19,31 @@ const ShowOneFilm = props => {
             image,
             name,
             officialSite,
-            summary
+            summary,
+            genres,
+            status
         }
     } = props
-
+    console.log(props)
     React.useEffect(() => {
         props.oneSerialRequest(id)
     },[id])
 
-    return props.fetch ? <Loader type={1} /> : <div>
-        <img alt={''} className={s.img}
-             src={image !== null ? image.medium : 'http://underscoremusic.co.uk/site/wp-content/uploads/2014/05/no-poster.jpg'}/>
-        <div>{name}</div>
-        <div>{officialSite}</div>
-        <div dangerouslySetInnerHTML={{__html: summary}}/>
+    return props.fetch ? <Loader type={1} /> : <div className={s.showOneFilm}>
+        <div className={s.showOneFilmTitle_Img}>
+            <div className={s.showOneFilmImg}><img alt={''} className={s.img}
+                                                   src={image !== null ? image.original : 'http://underscoremusic.co.uk/site/wp-content/uploads/2014/05/no-poster.jpg'}/>
+            </div>
+            <div className={s.showOneFilmTite}>
+                <div>Name: <span>{name}</span></div>
+                <div>Site: <a href={officialSite}>{officialSite}</a></div>
+                <div>Genres: {genres !== null && genres.map((el,i) => <span key={i}>{el} </span>)}</div>
+                <div>Status: <span>{status}</span></div>
+            </div>
+        </div>
+        <div className={s.showOneFilmSummary}>
+            <div style={{color: 'white'}} dangerouslySetInnerHTML={{__html: summary}}/>
+        </div>
     </div>
 }
 

@@ -6,7 +6,7 @@ import {handleActions} from 'redux-actions'
 
 const defaultState = {
     serials: undefined,
-    oneSerial: undefined,
+    oneSerial: {image:null,name:null,officialSite:null,summary:null,genres:null,status:null},
     searchText: '',
     error: null,
     fetch: false,

@@ -48,7 +48,7 @@ export const lessonAPI = {
             mode: 'cors',
         })
             .then(response => response.json())
-            .then(shows => shows.map(show => show.show));
+            .then(shows => shows.map(show => show.show))
     },
     show(showId) {
         return fetch(`http://api.tvmaze.com/shows/${showId}?embed=cast`, {
