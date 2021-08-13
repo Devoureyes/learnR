@@ -37,7 +37,9 @@ const User = props => {
                 <p>Followers: <span>{followers}</span></p>
                 <p>Public repos: <span>{public_repos}</span></p>
             </div>
-            {followersUser.map(el => <div key={el.id}>{el.login}</div>)}
+            <div>Followers:
+                {followersUser.map(el => <div key={el.id}>{el.login}</div>)}
+            </div>
         </div>
 
     </div>;
