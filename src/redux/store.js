@@ -14,6 +14,7 @@ import testReducer from './testReducer';
 import serialsReducer from '../components/lesson/serialsReducer';
 import github_reducer from '../components/githubLesson/github_reducer';
 import auth_reducer from '../components/githubLesson/login/auth_reducer';
+import user_reducer from '../components/githubLesson/User/user_reducer';
 
 let reducers = combineReducers({
     profilePage: profileReducer,
@@ -26,6 +27,7 @@ let reducers = combineReducers({
     serialsPage: serialsReducer,
     github_reducer,
     auth_reducer,
+    user_reducer,
 })
 
 const sagaMiddleware = createSagaMiddleware();

@@ -1,0 +1,58 @@
+.git {
+    position: relative;
+    padding: 3vh;
+    background: rgba(0,0,0,0);
+}
+.search {
+    width: 30%;
+    margin: auto;
+    padding-top: 5vh;
+}
+.search > form {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+.search > form > button {
+    margin: 5px 10px;
+    border-radius: 50px;
+    border-inline: none;
+    border: none;
+    transition: .2s;
+}
+.search > form > button:hover {
+    background: #97ffee;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.person {
+
+}
+.person img {
+    border-radius: 500px;
+    height: 100%;
+}
+.img {
+    height: 250px;
+}
+.bio {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.info {
+    margin: 5px 5vh;
+}
+
+.info p {
+    margin: 5px 0;
+    color: #00ffd9;
+}
+
+.info span {
+    color: white;
+}
+.info a {
+    color: #1fdb83;
+}

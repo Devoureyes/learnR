@@ -19,9 +19,9 @@ const Lesson = React.memo(props => {
         error
     } = props
 
-    let addNewSearch = values => {
+    const addNewSearch = React.useCallback(values => {
         searchRequest(values.newSearchBody);
-    }
+    },[searchRequest])
 
     return <div className={s.lesson}>
         <h1 className={s.h1}>Поиск по сериалам</h1>

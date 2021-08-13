@@ -23,6 +23,8 @@ import authGitSaga from '../components/githubLesson/login/authGitSaga';
 import {authorize} from '../components/githubLesson/login/auth_actions';
 import {setUserRequest} from '../components/githubLesson/github_actions';
 import githubSaga from '../components/githubLesson/git_saga';
+import {setFollowersRequest} from '../components/githubLesson/User/user_actions';
+import followersUserSaga from '../components/githubLesson/User/followersUser_saga';
 
 function* followSaga({payload:userId}) {
     try {
