@@ -12,13 +12,15 @@ const MyPosts = (p) => {
     const {
         posts,
         addPost,
+        deletePost
     } = p
 
-    let postElements = posts.map((el,i) => <Post key={i} post={el}/>)
+    let postElements = [...posts].reverse().map((el,i) => <Post deletePost={deletePost} key={i} post={el}/>)
 
     const AddPost = values => {
         addPost(values.postMessageBody)
     }
+
     return (
         <div className={s.posts}>
             <PostReduxForm onSubmit={AddPost} />

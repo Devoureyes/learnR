@@ -38,11 +38,10 @@ const User = props => {
                 <p>Public repos: <span>{public_repos}</span></p>
             </div>
             <div>Followers:
-                {followersUser.map(el => <div key={el.id}>{el.login}</div>)}
+                {followersUser !== undefined && followersUser.map(el => <div key={el.id}>{el.login}</div>)}
             </div>
         </div>
-
-    </div>;
+    </div>
 };
 
 const mstp = state => ({
