@@ -3,12 +3,13 @@ import {connect} from 'react-redux';
 import {compose} from 'redux';
 import {WithAuthGitRedirect} from '../hoc/WithAuthGitRedirect';
 import {setUserRequest} from './github_actions';
-import {getError, getUser, getUserSearch} from './github_reducer';
+import {getError, getToggleIsActive, getUser, getUserSearch} from './github_reducer';
 import s from './git.module.css';
 import User from './User/User';
 import {Field, reduxForm} from 'redux-form';
 import {loginInput} from '../commons/formControls/FormControls';
 import {maxLengthCreator} from '../../utils/validators';
+import Loader from '../todo/Loader';
 
 
 let maxLength50 = maxLengthCreator(50);
@@ -29,12 +30,13 @@ const Github = React.memo(props => {
         setUserRequest,
         user,
         userSearch,
-        error
+        error,
+        toggleIsActive,
     } = props;
 
     React.useEffect(() => {
         if (userSearch === '') {
-            setUserRequest('devoureyes');
+            setUserRequest('dev');
         } else {
             setUserRequest(userSearch);
         }
@@ -45,7 +47,9 @@ const Github = React.memo(props => {
     }, [setUserRequest]);
 
     return <div className={s.git}>
-        {user !== null && <User user={user}/>}
+        {toggleIsActive
+            ? <Loader type={1} />
+            : (user !== null && <User setUserRequest={setUserRequest} user={user}/>)}
         <div className={s.search}>
             <SearchGitReduxForm onSubmit={searchUser}/>
             {error !== '' && <span>{error}</span>}
@@ -56,7 +60,8 @@ const Github = React.memo(props => {
 const mstp = state => ({
     user: getUser(state),
     userSearch: getUserSearch(state),
-    error: getError(state)
+    error: getError(state),
+    toggleIsActive: getToggleIsActive(state),
 });
 
 const mdtp = {

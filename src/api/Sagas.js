@@ -25,6 +25,8 @@ import {setUserRequest} from '../components/githubLesson/github_actions';
 import githubSaga from '../components/githubLesson/git_saga';
 import {setFollowersRequest} from '../components/githubLesson/User/user_actions';
 import followersUserSaga from '../components/githubLesson/User/followersUser_saga';
+import {setDialogsRequest} from '../components/LessonDialogs/LessonDialogs_actions';
+import LessonDialogsSaga from '../components/LessonDialogs/LessonDialogs_saga';
 
 function* followSaga({payload:userId}) {
     try {
@@ -104,4 +106,6 @@ export default function* () {
     yield takeEvery(oneSerialRequest,getSerialSaga)
     yield takeLatest(authorize,authGitSaga)
     yield takeEvery(setUserRequest,githubSaga)
+    yield takeEvery(setFollowersRequest,followersUserSaga)
+    yield takeEvery(setDialogsRequest,LessonDialogsSaga)
 }

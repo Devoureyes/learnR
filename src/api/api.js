@@ -29,7 +29,6 @@ export const profileAPI = {
         return instance.put('profile/status', {status});
     }
 };
-
 export const userAPI = {
     getUsers(currentPage, pageSize) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`);
@@ -58,24 +57,30 @@ export const lessonAPI = {
     }
 };
 
+export const ldialogsAPI = {
+    getPayload() {
+        return fetch('http://localhost:3001/api/dialogs', {
+            method: 'GET',
+        });
+    }
+}
+
+
 const github = axios.create({
     baseURL: 'https://api.github.com/'
 });
-
 export const setTokenApi = access_token => {
     github.defaults.params = {access_token};
 };
-
 export const clearTokenApi = () => {
     github.defaults.params = {access_token: undefined};
 };
-
 export const githubAPI = {
     getUserInformation(login) {
         return github(`users/${login}`);
     },
-    getUserFollowers(login) {
-        return github(`users/${login}/followers?pages=1&per_page=100`);
+    getUserFollowers(login,page,per_page) {
+        return github(`users/${login}/followers?pages=${page}&per_page=${per_page}`);
     },
     getUserRepos(login) {
         return github(`users/${login}/repos`);

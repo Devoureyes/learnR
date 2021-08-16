@@ -26,6 +26,47 @@
     cursor: pointer;
     transform: scale(1.1);
 }
+.followers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.follower {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 7px;
+}
+.follower:hover {
+    cursor: pointer;
+}
+.follower:hover img {
+    filter: blur(3px);
+}
+.follower:hover span {
+    opacity: 1;
+}
+.follower img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: .3s;
+    overflow: hidden;
+}
+.follower span {
+    border-radius: 15px;
+    background: rgb(218, 206, 206);
+    transition: .3s;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    transform: translate(0,-50%);
+    width: 100%;
+    margin: 0;
+}
+
 .person {
 
 }

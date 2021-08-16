@@ -5,14 +5,8 @@ export const {
     setUserRequest,
     setUserSuccess,
     setUserFailure,
-    setFollowersRequest,
-    setFollowersSuccess,
-    setFollowersFailure,
 } = createActions({
     SET_USER_REQUEST:payload=>payload,
     SET_USER_SUCCESS:payload=>payload,
     SET_USER_FAILURE:payload=>payload,
-    SET_FOLLOWERS_REQUEST:payload=>payload,
-    SET_FOLLOWERS_SUCCESS:payload=>payload,
-    SET_FOLLOWERS_FAILURE:payload=>payload,
 })

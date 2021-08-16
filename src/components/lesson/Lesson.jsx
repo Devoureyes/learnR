@@ -5,9 +5,10 @@ import {connect} from 'react-redux';
 import {loginInput} from '../commons/formControls/FormControls';
 import {Field, reduxForm} from 'redux-form';
 import {maxLengthCreator} from '../../utils/validators';
-import OneFilm from "./OneFilm";
-import s from './lesson.module.css'
-import Loader from "../todo/Loader";
+import OneFilm from './OneFilm';
+import s from './lesson.module.css';
+import Loader from '../todo/Loader';
+
 
 let maxLength50 = maxLengthCreator(50);
 
@@ -17,20 +18,23 @@ const Lesson = React.memo(props => {
         serials,
         searchRequest,
         error
-    } = props
+    } = props;
 
     const addNewSearch = React.useCallback(values => {
         searchRequest(values.newSearchBody);
-    },[searchRequest])
+    }, [searchRequest]);
 
     return <div className={s.lesson}>
         <h1 className={s.h1}>Поиск по сериалам</h1>
         <SearchReduxForm onSubmit={addNewSearch}/>
         <div>{error}</div>
-        {fetch ? <Loader type={1} /> : <div className={s.films}>
-            {Array.isArray(serials)
-                && (serials.length > 0 ? serials.map((el, i) => (<OneFilm key={i} {...el}/>)) : <h1 className={s.h1}>Ничего не найдено</h1>)}
-        </div>}
+        {fetch
+            ? <Loader type={1}/>
+            : <div className={s.films}>
+                {Array.isArray(serials)
+                && (serials.length > 0 ? serials.map((el, i) => (<OneFilm key={i} {...el}/>)) :
+                    <h1 className={s.h1}>Ничего не найдено</h1>)}
+            </div>}
     </div>;
 });
 

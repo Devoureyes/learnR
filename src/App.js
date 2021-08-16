@@ -12,11 +12,16 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {initializeApp} from './redux/appReducer';
 import Loader from './components/todo/Loader';
-import Lesson from './components/lesson/Lesson';
-import ShowOneFilm from "./components/lesson/ShowOneFilm";
-import GitHub from './components/githubLesson/github';
 import LoginGit from './components/githubLesson/login/LoginGit';
+import {withSuspense} from './components/hoc/withSuspense';
+import LessonDialogs from './components/LessonDialogs/LessonDialogs';
 
+/*import Lesson from './components/lesson/Lesson';
+import ShowOneFilm from "./components/lesson/ShowOneFilm";
+import GitHub from './components/githubLesson/github';*/
+const Lesson = React.lazy(() => import('./components/lesson/Lesson'))
+const ShowOneFilm = React.lazy(() => import('./components/lesson/ShowOneFilm'))
+const GitHub = React.lazy(() => import('./components/githubLesson/github'))
 
 class App extends React.Component {
     componentDidMount() {
@@ -39,9 +44,10 @@ class App extends React.Component {
                     <Route path="/users" render={() => <UsersContainer/>}/>
                     <Route path="/login" render={() => <Login/>}/>
                     <Route path="/loginGit" render={() => <LoginGit/>}/>
-                    <Route path="/lesson" render={() => <Lesson/>}/>
-                    <Route path="/github" render={() => <GitHub />}/>
-                    <Route path="/show/:id" render={() => <ShowOneFilm />}/>
+                    <Route path="/lesson" render={withSuspense(Lesson)}/>
+                    <Route path="/github" render={withSuspense(GitHub)}/>
+                    <Route path="/lessonDialogs" render={withSuspense(LessonDialogs)}/>
+                    <Route path="/show/:id" render={withSuspense(ShowOneFilm)}/>
                     <img width="200px" src="skel.png" className="img1" alt={''}/>
                     <img width="200px" src="skel.png" className="img2" alt={''}/>
                 </div>

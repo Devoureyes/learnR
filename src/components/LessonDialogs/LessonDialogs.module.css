@@ -1,0 +1,14 @@
+.dialogsPage {
+    display: flex;
+    flex-direction: row;
+    padding: 3vh;
+}
+
+.users {
+    background: #1fdb83;
+    width: 10%;
+}
+.dialog {
+    width: 90%;
+    background: #d55be8;
+}

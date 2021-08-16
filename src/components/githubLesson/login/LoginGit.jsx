@@ -26,6 +26,13 @@ const LoginGitReduxForm = reduxForm({
 })(LoginGitForm)
 
 const LoginGit = (props) => {
+
+    React.useEffect(() => {
+        if(window.localStorage.token !== null) {
+            props.authorize(window.localStorage.token)
+        }
+    })
+
     const onSubmit = ({token}) => {
         props.authorize(token)
     }

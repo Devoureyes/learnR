@@ -15,6 +15,7 @@ import serialsReducer from '../components/lesson/serialsReducer';
 import github_reducer from '../components/githubLesson/github_reducer';
 import auth_reducer from '../components/githubLesson/login/auth_reducer';
 import user_reducer from '../components/githubLesson/User/user_reducer';
+import LessonDialogs_reducer from '../components/LessonDialogs/LessonDialogs_reducer';
 
 let reducers = combineReducers({
     profilePage: profileReducer,
@@ -28,11 +29,13 @@ let reducers = combineReducers({
     github_reducer,
     auth_reducer,
     user_reducer,
+    LessonDialogs_reducer,
 })
 
 const sagaMiddleware = createSagaMiddleware();
 
-let store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk,sagaMiddleware)));
+let store = createStore(reducers,
+    composeWithDevTools(applyMiddleware(thunk,sagaMiddleware)));
 
 sagaMiddleware.run(rootSaga)
 window.store = store
