@@ -56,16 +56,18 @@ export const lessonAPI = {
         });
     }
 };
-
+function form(data) {
+    const formBody = [];
+    for (let property in data) {
+        const encodedKey = encodeURIComponent(property);
+        const encodedValue = encodeURIComponent(data[property]);
+        formBody.push(encodedKey + "=" + encodedValue);
+    }
+    return formBody.join("&")
+}
 export const ldialogsAPI = {
     getDialog(data) {
-        const formBody = [];
-        for (let property in data) {
-            const encodedKey = encodeURIComponent(property);
-            const encodedValue = encodeURIComponent(data[property]);
-            formBody.push(encodedKey + "=" + encodedValue);
-        }
-        const body = formBody.join("&");
+        const body = form(data);
         return fetch('http://localhost:3001/api/dialogs/dialog', {
             method: 'POST',
             mode: 'cors',
@@ -76,13 +78,7 @@ export const ldialogsAPI = {
         });
     },
     getUsers(data) {
-        const formBody = [];
-        for (let property in data) {
-            const encodedKey = encodeURIComponent(property);
-            const encodedValue = encodeURIComponent(data[property]);
-            formBody.push(encodedKey + "=" + encodedValue);
-        }
-        const body = formBody.join("&");
+        const body = form(data);
         return fetch('http://localhost:3001/api/dialogs', {
             method: 'POST',
             mode: 'cors',
@@ -93,18 +89,23 @@ export const ldialogsAPI = {
         });
     },
     getAuth(data) {
-        const formBody = [];
-        for (let property in data) {
-            const encodedKey = encodeURIComponent(property);
-            const encodedValue = encodeURIComponent(data[property]);
-            formBody.push(encodedKey + "=" + encodedValue);
-        }
-        const body = formBody.join("&");
+        const body = form(data);
         return fetch('http://localhost:3001/api/auth',{
             method: 'POST',
             mode: 'cors',
             headers: {
               "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body,
+        })
+    },
+    sendMessage(data) {
+        const body = form(data);
+        return fetch('http://localhost:3001/api/sendMessage/',{
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
             },
             body,
         })

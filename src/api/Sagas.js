@@ -25,11 +25,16 @@ import {setUserRequest} from '../components/githubLesson/github_actions';
 import githubSaga from '../components/githubLesson/git_saga';
 import {setFollowersRequest} from '../components/githubLesson/User/user_actions';
 import followersUserSaga from '../components/githubLesson/User/followersUser_saga';
-import {setDialogLRequest, setUsersLRequest} from '../components/LessonDialogs/LessonDialogs_actions';
+import {
+    sendMessageRequest,
+    setDialogLRequest,
+    setUsersLRequest
+} from '../components/LessonDialogs/LessonDialogs_actions';
 import {setUserDataLRequest} from '../components/LessonDialogs/auth/LAuth_actions';
 import LAuth_saga from '../components/LessonDialogs/auth/LAuth_saga';
 import LessonUsersSaga from '../components/LessonDialogs/LessonUsers_saga';
 import LessonDialogSaga from '../components/LessonDialogs/LessonDialog_saga';
+import SendMessageLesson_saga from '../components/LessonDialogs/SendMessageLesson_saga';
 
 function* followSaga({payload:userId}) {
     try {
@@ -113,4 +118,5 @@ export default function* () {
     yield takeLatest(setUsersLRequest,LessonUsersSaga)
     yield takeLatest(setDialogLRequest,LessonDialogSaga)
     yield takeLatest(setUserDataLRequest,LAuth_saga)
+    yield takeLatest(sendMessageRequest,SendMessageLesson_saga)
 }
