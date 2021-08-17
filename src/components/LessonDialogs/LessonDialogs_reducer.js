@@ -1,60 +1,32 @@
 import {handleActions} from 'redux-actions'
 import {
-    setDialogsRequest,
-    setDialogsSuccess,
-    setDialogsFailure,
+    setUsersLRequest,
+    setUsersLSuccess,
+    setUsersLFailure,
 } from './LessonDialogs_actions'
 
 const defaultState = {
     users: [
-        {id: 1, name: 'n1'},
-        {id: 2, name: 'n2'},
-        {id: 3, name: 'n3'},
+        {id: undefined, name: undefined,dialogs: [undefined]},
     ],
-    dialogs: [
-    {
-        id: 1, messages: [
-            {message: 'h1', data: ''},
-            {message: 'h2', data: ''},
-            {message: 'h3', data: ''},
-            {message: 'h4', data: ''},
-        ]
-    },
-    {
-        id: 2, messages: [
-            {message: '2h1', data: ''},
-            {message: '2h2', data: ''},
-            {message: '2h3', data: ''},
-            {message: '2h4', data: ''},
-        ]
-    },
-    {
-        id: 3, messages: [
-            {message: '3h1', data: ''},
-            {message: '3h2', data: ''},
-            {message: '3h3', data: ''},
-            {message: '3h4', data: ''},
-        ]
-    },
-],
+    dialog: [],
     toggleIsActive: false,
     error: '',
 }
 
 const LessonDialogs = handleActions({
-    [setDialogsRequest]: (state,action) => ({
+    [setUsersLRequest]: (state,action) => ({
         ...state,
         toggleIsActive: true,
         error: ''
     }),
-    [setDialogsSuccess]: (state,action) => ({
+    [setUsersLSuccess]: (state,action) => ({
         ...state,
         users: action.payload.users,
-        dialogs: action.payload.dialogs,
         toggleIsActive: true,
         error: ''
     }),
-    [setDialogsFailure]: (state,action) => ({
+    [setUsersLFailure]: (state,action) => ({
         ...state,
         toggleIsActive: true,
         error: action.payload
@@ -62,7 +34,7 @@ const LessonDialogs = handleActions({
 },defaultState)
 
 export const getUsers = state => state.LessonDialogs_reducer.users
-export const getDialogs = state => state.LessonDialogs_reducer.dialogs
+export const getDialog = state => state.LessonDialogs_reducer.dialog
 export const getToggle = state => state.LessonDialogs_reducer.toggleIsActive
 export const getError = state => state.LessonDialogs_reducer.error
 

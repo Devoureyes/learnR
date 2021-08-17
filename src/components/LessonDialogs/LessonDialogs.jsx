@@ -1,31 +1,37 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getDialogs, getError, getToggle, getUsers} from './LessonDialogs_reducer';
+import {getDialog, getError, getToggle, getUsers} from './LessonDialogs_reducer';
 import {
-    setDialogsRequest,
-    setDialogsSuccess,
-    setDialogsFailure,
+    setUsersLRequest
 } from './LessonDialogs_actions';
 import s from './LessonDialogs.module.css';
+import {compose} from 'redux';
+import {LAuthRedirect_hoc} from './LAuthRedirect_hoc';
+import {getUserId} from './auth/LAuth_reducer';
 
 const LessonDialogs = React.memo(props => {
+
     const {
-        setDialogsRequest,
+        setUsersLRequest,
         users,
-        dialogs
+        dialog,
+        userId
     } = props
 
-    console.log(dialogs[0])
+    const setDialogIdCallback = React.useCallback((id) => {
+        setUsersLRequest(id)
+    },[setUsersLRequest])
+
     React.useEffect(() => {
-        setDialogsRequest()
-    },[setDialogsRequest])
+        setUsersLRequest(userId)
+    },[setUsersLRequest,userId])
 
     return <div className={s.dialogsPage}>
         <div className={s.users}>
-            {users.map(el => <div key={el.id}>{el.name}</div>)}
+            {users.map(el => <div className={s.userSel} key={el.id} onClick={() => setDialogIdCallback(el.id)}>{el.name}</div>)}
         </div>
         <div className={s.dialog}>
-            {dialogs[users[0].id].messages.map(el => <div key={el.id}>{el.message}</div>)}
+            {dialog.length > 0 && dialog.lengthdialogs[0].messages.map(el => <div key={el.id}>{el.message}</div>)}
         </div>
     </div>
 })
@@ -34,13 +40,15 @@ const LessonDialogs = React.memo(props => {
 
 const mstp = state => ({
     users: getUsers(state),
-    dialogs: getDialogs(state),
+    dialog: getDialog(state),
     toggleIsActive: getToggle(state),
-    error: getError(state)
+    error: getError(state),
+    userId: getUserId(state)
 })
 const mdtp = {
-    setDialogsRequest,
-    setDialogsSuccess,
-    setDialogsFailure,
+    setUsersLRequest,
 }
-export default connect(mstp,mdtp)(LessonDialogs);
+export default compose(
+    LAuthRedirect_hoc,
+    connect(mstp,mdtp)
+)(LessonDialogs);

@@ -2,11 +2,11 @@ import {createActions} from 'redux-actions';
 
 
 export const {
-    setDialogsRequest,
-    setDialogsSuccess,
-    setDialogsFailure,
+    setUsersLRequest,
+    setUsersLSuccess,
+    setUsersLFailure,
 } = createActions({
-    SET_DIALOGS_REQUEST: payload=>payload,
-    SET_DIALOGS_SUCCESS: payload=>payload,
-    SET_DIALOGS_FAILURE: payload=>payload,
+    SET_USERS_L_REQUEST: payload=>payload,
+    SET_USERS_L_SUCCESS: payload=>payload,
+    SET_USERS_L_FAILURE: payload=>payload,
 })

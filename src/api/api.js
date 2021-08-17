@@ -58,10 +58,45 @@ export const lessonAPI = {
 };
 
 export const ldialogsAPI = {
-    getPayload() {
+    getPayloads() {
         return fetch('http://localhost:3001/api/dialogs', {
             method: 'GET',
+            mode: 'cors'
         });
+    },
+    getPayload(data) {
+        const formBody = [];
+        for (let property in data) {
+            const encodedKey = encodeURIComponent(property);
+            const encodedValue = encodeURIComponent(data[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
+        }
+        const body = formBody.join("&");
+        return fetch('http://localhost:3001/api/dialogs', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body
+        });
+    },
+    getAuth(data) {
+        const formBody = [];
+        for (let property in data) {
+            const encodedKey = encodeURIComponent(property);
+            const encodedValue = encodeURIComponent(data[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
+        }
+        const body = formBody.join("&");
+        return fetch('http://localhost:3001/api/auth',{
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body,
+        })
     }
 }
 

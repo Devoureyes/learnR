@@ -1,19 +1,18 @@
 import {put} from 'redux-saga/effects';
 
-import {setDialogsSuccess, setDialogsFailure} from './LessonDialogs_actions';
+import {setUsersLSuccess, setUsersLFailure} from './LessonDialogs_actions';
 import {ldialogsAPI} from '../../api/api';
 
 
 export default function* LessonDialogsSaga({payload}) {
     try {
-        const response = yield ldialogsAPI.getPayload();
+        const response = yield ldialogsAPI.getPayload({id: payload});
         if (response.status >= 200 && response.status < 400) {
             const data = yield response.json();
-            console.log(data)
-            yield put(setDialogsSuccess(data));
+            yield put(setUsersLSuccess(data));
         }
     } catch (e) {
         console.log(e);
-        yield put(setDialogsFailure('Something is wrong'));
+        yield put(setUsersLFailure('Something is wrong'));
     }
 }

@@ -16,6 +16,7 @@ import github_reducer from '../components/githubLesson/github_reducer';
 import auth_reducer from '../components/githubLesson/login/auth_reducer';
 import user_reducer from '../components/githubLesson/User/user_reducer';
 import LessonDialogs_reducer from '../components/LessonDialogs/LessonDialogs_reducer';
+import LAuth_reducer from '../components/LessonDialogs/auth/LAuth_reducer';
 
 let reducers = combineReducers({
     profilePage: profileReducer,
@@ -30,6 +31,7 @@ let reducers = combineReducers({
     auth_reducer,
     user_reducer,
     LessonDialogs_reducer,
+    LAuth_reducer,
 })
 
 const sagaMiddleware = createSagaMiddleware();

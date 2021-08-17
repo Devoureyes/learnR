@@ -12,3 +12,11 @@
     width: 90%;
     background: #d55be8;
 }
+.userSel {
+    cursor: pointer;
+    transition: .1s;
+}
+
+.userSel:hover {
+    background: white;
+}
