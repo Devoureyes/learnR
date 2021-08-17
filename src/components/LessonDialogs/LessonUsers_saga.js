@@ -4,9 +4,9 @@ import {setUsersLSuccess, setUsersLFailure} from './LessonDialogs_actions';
 import {ldialogsAPI} from '../../api/api';
 
 
-export default function* LessonDialogsSaga({payload}) {
+export default function* LessonUsersSaga({payload}) {
     try {
-        const response = yield ldialogsAPI.getPayload({id: payload});
+        const response = yield ldialogsAPI.getUsers({id: payload});
         if (response.status >= 200 && response.status < 400) {
             const data = yield response.json();
             yield put(setUsersLSuccess(data));

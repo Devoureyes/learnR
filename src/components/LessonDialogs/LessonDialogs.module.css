@@ -7,11 +7,21 @@
 .users {
     background: #1fdb83;
     width: 10%;
+    border-radius: 25px;
+    padding: 15px;
+    text-align: center;
 }
+
 .dialog {
     width: 90%;
     background: #d55be8;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    border-radius: 25px;
 }
+
 .userSel {
     cursor: pointer;
     transition: .1s;
@@ -19,4 +29,27 @@
 
 .userSel:hover {
     background: white;
+    border-radius: 25px;
+}
+
+.myMessage {
+    justify-self: right;
+    align-self: flex-end;
+    margin: 10px;
+}
+
+.myMessage span {
+    border-radius: 25px;
+    background: #666666;
+    padding: 5px 8px;
+}
+
+.ComMessage {
+    margin: 12px;
+}
+
+.ComMessage span {
+    padding: 5px 8px;
+    border-radius: 25px;
+    background: #37f2dc;
 }

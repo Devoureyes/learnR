@@ -58,13 +58,24 @@ export const lessonAPI = {
 };
 
 export const ldialogsAPI = {
-    getPayloads() {
-        return fetch('http://localhost:3001/api/dialogs', {
-            method: 'GET',
-            mode: 'cors'
+    getDialog(data) {
+        const formBody = [];
+        for (let property in data) {
+            const encodedKey = encodeURIComponent(property);
+            const encodedValue = encodeURIComponent(data[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
+        }
+        const body = formBody.join("&");
+        return fetch('http://localhost:3001/api/dialogs/dialog', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body
         });
     },
-    getPayload(data) {
+    getUsers(data) {
         const formBody = [];
         for (let property in data) {
             const encodedKey = encodeURIComponent(property);

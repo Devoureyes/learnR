@@ -2,23 +2,23 @@ import {handleActions} from 'redux-actions'
 import {
     setUsersLRequest,
     setUsersLSuccess,
-    setUsersLFailure,
-} from './LessonDialogs_actions'
+    setUsersLFailure, setDialogLRequest, setDialogLSuccess, setDialogLFailure,
+} from './LessonDialogs_actions';
 
 const defaultState = {
     users: [
         {id: undefined, name: undefined,dialogs: [undefined]},
     ],
-    dialog: [],
+    dialog: undefined,
     toggleIsActive: false,
+    toggleDialog: false,
     error: '',
 }
 
 const LessonDialogs = handleActions({
     [setUsersLRequest]: (state,action) => ({
         ...state,
-        toggleIsActive: true,
-        error: ''
+        toggleIsActive: true
     }),
     [setUsersLSuccess]: (state,action) => ({
         ...state,
@@ -31,6 +31,19 @@ const LessonDialogs = handleActions({
         toggleIsActive: true,
         error: action.payload
     }),
+    [setDialogLRequest]: (state,action) => ({
+        ...state,
+        toggleDialog: true,
+    }),
+    [setDialogLSuccess]: (state,action) => ({
+        ...state,
+        dialog: action.payload,
+        error: ''
+    }),
+    [setDialogLFailure]: (state,action) => ({
+        ...state,
+        error: action.payload
+    })
 },defaultState)
 
 export const getUsers = state => state.LessonDialogs_reducer.users
