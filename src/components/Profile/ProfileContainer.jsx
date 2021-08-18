@@ -5,22 +5,33 @@ import {connect} from "react-redux";
 import {withRouter} from 'react-router-dom';
 import {WithAuthRedirect} from '../hoc/WithAuthRedirect';
 import {compose} from 'redux';
+import {setUserPhotoRequest} from './profile_actions';
 
 
 class ProfileContainer extends React.Component {
-    componentDidMount() {
+    refreshProfile() {
         let userId = this.props.match.params.userId
         if(!userId)
             userId = this.props.AuthUserId;
         this.props.getUserStatus(userId)
         this.props.getUserProfile(userId)
     }
+    componentDidMount() {
+        this.refreshProfile()
+    }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.match.params.userId !== prevProps.userId)
+        {this.refreshProfile()}
     }
 
     render() {
-        return <Profile {...this.props} updateStatus={this.props.updateStatus} status={this.props.status} profile={this.props.profile}/>
+        return <Profile {...this.props}
+            isOwner={!this.props.match.params.userId}
+            updateStatus={this.props.updateStatus}
+            status={this.props.status}
+            profile={this.props.profile}
+            savePhoto={this.props.setUserPhotoRequest}/>
     }
 }
 
@@ -43,6 +54,7 @@ let mdtp = {
     getUserProfile,
     getUserStatus,
     updateStatus,
+    setUserPhotoRequest
 }
 
 export default compose(

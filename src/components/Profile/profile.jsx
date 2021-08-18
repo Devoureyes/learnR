@@ -10,10 +10,14 @@ const Profile = (p) => {
         updateStatus,
         getUserStatus,
         getUserProfile,
+        isOwner,
+        savePhoto
     }   = p
 
     return <div className="profile">
         <ProfileInfo
+            savePhoto={savePhoto}
+            isOwner={isOwner}
             profile={profile}
             getUserStatus={getUserStatus}
             getUserProfile={getUserProfile}

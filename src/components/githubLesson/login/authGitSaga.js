@@ -7,11 +7,11 @@ import {
     removeTokenFromLocalStorage
 } from './localStorage';
 import {clearTokenApi, setTokenApi} from '../../../api/api';
-import {getIsAuthorized} from './auth_reducer';
+import {getterIsAuthorized} from './auth_reducer';
 
 
 export default function* authGitSaga() {
-    const isAuthorized = yield select(getIsAuthorized); /* boolean */
+    const isAuthorized = yield select(getterIsAuthorized); /* boolean */
     const localStorageToken = yield call(getTokenFromLocalStorage);
 
     let token;

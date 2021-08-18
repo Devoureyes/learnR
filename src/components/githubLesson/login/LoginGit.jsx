@@ -6,7 +6,7 @@ import s from '../../login/login.module.css';
 import {required} from '../../../utils/validators';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
-import {authorize} from './auth_actions';
+import {authorize, getIsAuthorized} from './auth_actions';
 import {LoginGitRedirect} from '../../hoc/LogitGitRedirect';
 
 
@@ -45,4 +45,4 @@ const LoginGit = (props) => {
     </div>
 }
 
-export default compose(LoginGitRedirect,connect(null, {authorize}))(LoginGit);
+export default compose(LoginGitRedirect,connect(null, {authorize,getIsAuthorized}))(LoginGit);

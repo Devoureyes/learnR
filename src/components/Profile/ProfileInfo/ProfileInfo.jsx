@@ -7,6 +7,15 @@ import ProfileStatusHook from "./ProfileStatusHook";
 
 
 const ProfileInfo = (props) => {
+
+    const { savePhoto } = props
+    const onMainPhotoSelect = React.useCallback((e) => {
+        if(e.target.files.length) {
+            console.log(e.target.files[0])
+            savePhoto(e.target.files[0])
+        }
+    },[savePhoto])
+
     if (!props.profile) {
         return <Loader type={1}/>;
     }
@@ -21,7 +30,9 @@ const ProfileInfo = (props) => {
         },
         updateStatus,
         status,
+        isOwner
     } = props;
+
     return <React.Fragment>
         <div className={s.profileInfo}>
             <div>
@@ -29,7 +40,8 @@ const ProfileInfo = (props) => {
             </div>
             <div key={userId} className={s.profile}>
                 <div>
-                    <img className={s.imgprofile} src={photos.large ? photos.large : userPhoto} alt=""/>
+                    <img className={s.imgprofile} src={photos.large || userPhoto} alt=""/>
+                    {isOwner && <input type={'file'} onChange={onMainPhotoSelect}/>}
                 </div>
                 <div className={s.stats}>
                     <p className={s.name}>{fullName}</p>

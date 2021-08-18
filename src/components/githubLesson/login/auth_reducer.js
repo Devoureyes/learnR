@@ -1,6 +1,6 @@
 import {handleActions} from 'redux-actions';
 import {
-    authorize,
+    authorize, getIsAuthorized,
     logout,
 } from './auth_actions';
 
@@ -16,9 +16,12 @@ const GitHubReducer =  handleActions({
         ...state,
         isAuthorized:false
     }),
+    [getIsAuthorized]: (state,action) => ({
+        ...state
+    })
 
 },defaultState)
 
-export const getIsAuthorized = state => state.auth_reducer.isAuthorized
+export const getterIsAuthorized = state => state.auth_reducer.isAuthorized
 
 export default GitHubReducer;

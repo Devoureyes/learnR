@@ -68,4 +68,7 @@ const mdtp = {
     setUserRequest
 };
 
-export default compose(WithAuthGitRedirect, connect(mstp, mdtp))(Github);
+export default compose(
+    WithAuthGitRedirect,
+    connect(mstp, mdtp)
+)(Github);
