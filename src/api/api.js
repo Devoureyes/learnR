@@ -100,14 +100,10 @@ export const ldialogsAPI = {
         })
     },
     sendMessage(data) {
-        const body = form(data);
-        return fetch('http://localhost:3001/api/sendMessage/',{
+        return fetch('http://localhost:3001/api/dialogs/sendMessage/',{
             method: 'POST',
             mode: 'cors',
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body,
+            body: JSON.stringify(data),
         })
     }
 }

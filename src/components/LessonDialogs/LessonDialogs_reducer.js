@@ -2,7 +2,13 @@ import {handleActions} from 'redux-actions'
 import {
     setUsersLRequest,
     setUsersLSuccess,
-    setUsersLFailure, setDialogLRequest, setDialogLSuccess, setDialogLFailure,
+    setUsersLFailure,
+    setDialogLRequest,
+    setDialogLSuccess,
+    setDialogLFailure,
+    sendMessageRequest,
+    sendMessageSuccess,
+    sendMessageFailure,
 } from './LessonDialogs_actions';
 
 const defaultState = {
@@ -12,6 +18,7 @@ const defaultState = {
     dialog: undefined,
     toggleIsActive: false,
     toggleDialog: false,
+    toggleMessage: false,
     error: '',
 }
 
@@ -42,6 +49,21 @@ const LessonDialogs = handleActions({
     }),
     [setDialogLFailure]: (state,action) => ({
         ...state,
+        error: action.payload
+    }),
+    [sendMessageRequest]: (state,action) => ({
+        ...state,
+        toggleMessage: true,
+    }),
+    [sendMessageSuccess]: (state,action) => ({
+        ...state,
+        toggleMessage: false,
+        error: '',
+        dialog: action.payload,
+    }),
+    [sendMessageFailure]: (state,action) => ({
+        ...state,
+        toggleMessage: false,
         error: action.payload
     })
 },defaultState)
