@@ -1,4 +1,5 @@
 import {profileAPI} from '../api/api';
+import {setUserPhotoSuccess} from "../components/Profile/profile_actions";
 
 
 const ADD_POST = 'ADD_POST';
@@ -20,7 +21,7 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST: {
             return {
                 ...state,
-                posts: [...state.posts, {id: state.posts.length+1, post: action.newPostBody, likeCount: 0}],
+                posts: [...state.posts, {id: state.posts.length + 1, post: action.newPostBody, likeCount: 0}],
             };
         }
         case SET_USER_PROFILE: {
@@ -30,8 +31,19 @@ const profileReducer = (state = initialState, action) => {
             return {...state, status: action.status};
         }
         case DELETE_POST: {
-            return {...state,
-            posts: state.posts.filter(post => post.id !== action.id)}
+            return {
+                ...state,
+                posts: state.posts.filter(post => post.id !== action.id)
+            }
+        }
+        case 'SET_USER_PHOTO_SUCCESS': {
+            return {
+                ...state,
+                profile: {
+                    ...state.profile,
+                    photos: action.payload
+                }
+            }
         }
         default:
             return state;
@@ -50,7 +62,9 @@ export const getUserStatus = id => (dispatch) => {
 };
 export const updateStatus = status => (dispatch) => {
     profileAPI.updateStatus(status).then(r => {
-        if (r.data.resultCode === 0) {dispatch(setStatus(status));}
+        if (r.data.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
     });
 };
 

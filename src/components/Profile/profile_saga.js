@@ -6,8 +6,7 @@ function* setUserPhoto_saga({payload}) {
     try {
         const response = yield profileAPI.setUserPhoto(payload)
         if(response.status >= 200 && response.status < 400) {
-            const data = response.json()
-            yield put(setUserPhotoSuccess(data))
+            yield put(setUserPhotoSuccess(response.data.data.photos))
         }
     } catch (e) {
         console.log(e)

@@ -11,7 +11,6 @@ const ProfileInfo = (props) => {
     const { savePhoto } = props
     const onMainPhotoSelect = React.useCallback((e) => {
         if(e.target.files.length) {
-            console.log(e.target.files[0])
             savePhoto(e.target.files[0])
         }
     },[savePhoto])
