@@ -11,7 +11,8 @@ let initialState = {
     posts: [
         {id: 1, post: '1', likeCount: 0},
         {id: 2, post: '2', likeCount: 0},
-    ]
+    ],
+    error: ''
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -42,6 +43,12 @@ const profileReducer = (state = initialState, action) => {
                     photos: action.payload
                 }
             }
+        }
+        case 'SAVE_PROFILE_SUCCESS': {
+            return {...state, profile: action.payload};
+        }
+        case 'SAVE_PROFILE_FAILURE': {
+            return {...state, error: action.payload}
         }
         default:
             return state;

@@ -13,6 +13,11 @@
     display: flex;
     z-index: 1006;
 }
+@media screen and (max-width: 1200px) {
+    .header {
+        width: 100%;
+    }
+}
 @media screen and (max-device-width: 767px) {
     .header {
         width: 100%;

@@ -16,6 +16,7 @@ import LoginGit from './components/githubLesson/login/LoginGit';
 import {withSuspense} from './components/hoc/withSuspense';
 import LessonDialogs from './components/LessonDialogs/LessonDialogs';
 import LAuth from './components/LessonDialogs/auth/LAuth';
+import NavbarTelephone from "./components/navbar/NavbarTelephone";
 
 /*import Lesson from './components/lesson/Lesson';
 import ShowOneFilm from "./components/lesson/ShowOneFilm";
@@ -36,6 +37,7 @@ class App extends React.Component {
             return <div className="app-wrapper">
                 <HeaderContainer/>
                 <Navbar/>
+                <NavbarTelephone/>
                 <div className="content style">
                     {/*<Route path='/messages' component={Dialogs}/>*/}
                     {/*<Route path='/profile' render={Profile}/>*/}
@@ -49,7 +51,7 @@ class App extends React.Component {
                     <Route path="/github" render={withSuspense(GitHub)}/>
                     <Route path="/lessonDialogs" render={withSuspense(LessonDialogs)}/>
                     <Route path="/show/:id" render={withSuspense(ShowOneFilm)}/>
-                    <Route path="/LAuth" render={() => <LAuth/> } />
+                    <Route path="/LAuth" render={() => <LAuth/>}/>
                     <img width="200px" src="skel.png" className="img1" alt={''}/>
                     <img width="200px" src="skel.png" className="img2" alt={''}/>
                 </div>
@@ -57,6 +59,7 @@ class App extends React.Component {
         }
     }
 }
+
 const mstp = state => ({
     initialized: state.app.initialized
 });

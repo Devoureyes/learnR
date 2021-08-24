@@ -17,6 +17,7 @@ const ProfileInfo = (props) => {
     }, [savePhoto])
     const onSubmit = useCallback(props => {
         saveProfile(props)
+        setEditMode(false)
     },[saveProfile])
 
     const [editMode,setEditMode] = useState(false)
@@ -26,13 +27,15 @@ const ProfileInfo = (props) => {
     }
     const {
         profile: {
+            contacts,
             photos,
             fullName,
             userId,
         },
         updateStatus,
         status,
-        isOwner
+        isOwner,
+        error
     } = props;
 
     return <React.Fragment>
@@ -48,7 +51,10 @@ const ProfileInfo = (props) => {
                 <div className={s.stats}>
                     <p className={s.name}>{fullName}</p>
                     <ProfileStatusHook update={updateStatus} status={status}/>
-                    {editMode ? <ProfileDataForm onSubmit={onSubmit}/> : <ProfileData setEditMode={setEditMode} isOwner={isOwner} profile={props.profile}/>}
+                    {error !== '' && <div style={{color: 'yellow', border: '3px dashed red', padding: '5px'}}>{error}</div>}
+                    {editMode
+                        ? <ProfileDataForm contacts={contacts} initialValues={props.profile} onSubmit={onSubmit}/>
+                        : <ProfileData setEditMode={setEditMode} isOwner={isOwner} profile={props.profile}/>}
                 </div>
             </div>
         </div>

@@ -6,6 +6,14 @@
     align-items: center;
     align-content: center;
 }
+@media screen and (max-width: 767px){
+    .profile {
+        flex-direction: column;
+    }
+    .stats {
+        width: 100%;
+    }
+}
 .stats {
     margin: 2vh 5vh 0 2vh;
 }

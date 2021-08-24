@@ -12,7 +12,8 @@ const Profile = (p) => {
         getUserProfile,
         isOwner,
         savePhoto,
-        saveProfile
+        saveProfile,
+        error
     }   = p
 
     return <div className="profile">
@@ -25,6 +26,7 @@ const Profile = (p) => {
             status={status}
             updateStatus={updateStatus}
             saveProfile={saveProfile}
+            error={error}
         />
         <Slideshow/>
         <MyPostsContainer />

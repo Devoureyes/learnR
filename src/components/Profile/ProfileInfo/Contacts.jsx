@@ -6,7 +6,7 @@ export default props => {
     const {contacts}=props
     return <ul className={s.ulp}>
         {Object.keys(contacts).map(key => {
-            return <li key={key}>{key}: {contacts[key]}</li>
+            return <li key={key}>{key}: <a style={{color: 'orange'}} href={contacts[key]}>{contacts[key]}</a></li>
         })}
     </ul>
 }
