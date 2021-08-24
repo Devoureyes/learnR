@@ -1,6 +1,4 @@
 import {profileAPI} from '../api/api';
-import {setUserPhotoSuccess} from "../components/Profile/profile_actions";
-
 
 const ADD_POST = 'ADD_POST';
 const DELETE_POST = 'DELETE_POST';

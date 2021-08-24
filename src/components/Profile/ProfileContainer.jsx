@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {withRouter} from 'react-router-dom';
 import {WithAuthRedirect} from '../hoc/WithAuthRedirect';
 import {compose} from 'redux';
-import {setUserPhotoRequest} from './profile_actions';
+import {saveProfileRequest, setUserPhotoRequest} from './profile_actions';
 
 
 class ProfileContainer extends React.Component {
@@ -20,6 +20,8 @@ class ProfileContainer extends React.Component {
         this.refreshProfile()
     }
 
+
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(this.props.match.params.userId !== prevProps.userId)
         {this.refreshProfile()}
@@ -31,7 +33,8 @@ class ProfileContainer extends React.Component {
             updateStatus={this.props.updateStatus}
             status={this.props.status}
             profile={this.props.profile}
-            savePhoto={this.props.setUserPhotoRequest}/>
+            savePhoto={this.props.setUserPhotoRequest}
+            saveProfile={this.props.saveProfileRequest}/>
     }
 }
 
@@ -54,7 +57,8 @@ let mdtp = {
     getUserProfile,
     getUserStatus,
     updateStatus,
-    setUserPhotoRequest
+    setUserPhotoRequest,
+    saveProfileRequest
 }
 
 export default compose(

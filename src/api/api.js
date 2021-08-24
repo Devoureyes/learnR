@@ -28,6 +28,9 @@ export const profileAPI = {
             }
         })
     },
+    saveProfile(payload) {
+        return instance.put('profile',payload)
+    },
     getProfile(userId) {
         return instance.get('profile/' + userId).then(r => { return r.data; });
     },
