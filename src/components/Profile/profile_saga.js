@@ -7,6 +7,7 @@ import {
     setUserPhotoSuccess
 } from './profile_actions';
 import {profileAPI} from '../../api/api';
+import {stopSubmit} from "redux-form";
 
 function* setUserPhoto_saga({payload}) {
     try {
@@ -28,7 +29,8 @@ function* saveProfile_saga({payload}) {
                 yield put(saveProfileSuccess(data))
             }
         } else {
-            yield put(saveProfileFailure(response.data.messages))
+            yield put(saveProfileFailure(response.data.messages[0]))
+            //yield put(stopSubmit("editProfile",{"contacts":{"facebook":response.data.messages[0]}}))
         }
     } catch (e) {
         console.log(e)

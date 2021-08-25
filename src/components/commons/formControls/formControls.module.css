@@ -4,6 +4,12 @@
 .errorLogin  {
     border: 2px solid red!important;
 }
+.formControl {
+
+}
+.formControlError {
+    border: 1px red;
+}
 .formSumError {
     animation: login-error ease-in 2s infinite reverse both running;
     border: 2px solid #00ffd9;

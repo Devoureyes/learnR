@@ -11,13 +11,18 @@ export const AuthAPI = {
     me() {
         return instance.get('auth/me').then(r => { return r.data; });
     },
-    login(email, password, rememberMe = false) {
-        return instance.post('auth/login', {email, password, rememberMe});
+    login(email, password, rememberMe = false,captcha) {
+        return instance.post('auth/login', {email, password, rememberMe,captcha});
     },
     logout() {
         return instance.delete('auth/login');
     }
 };
+export const securityAPI = {
+    getCaptchaUrl() {
+        return instance.get('security/get-captcha-url')
+    }
+}
 export const profileAPI = {
     setUserPhoto(payload) {
         let formData = new FormData()
@@ -124,18 +129,18 @@ export const ldialogsAPI = {
 const github = axios.create({
     baseURL: 'https://api.github.com/'
 });
-export const setTokenApi = access_token => {
-    github.defaults.params = {access_token};
-};
-export const clearTokenApi = () => {
-    github.defaults.params = {access_token: undefined};
-};
 export const githubAPI = {
     getUserInformation(login) {
         return github(`users/${login}`);
     },
     getUserFollowers(login,page,per_page) {
         return github(`users/${login}/followers?pages=${page}&per_page=${per_page}`);
+    },
+    clearTokenApi()  {
+        github.defaults.params = {access_token: undefined};
+    },
+    setTokenApi ( access_token ) {
+        github.defaults.params = {access_token};
     },
     getUserRepos(login) {
         return github(`users/${login}/repos`);

@@ -6,7 +6,7 @@ import {
     setTokenToLocalStorage,
     removeTokenFromLocalStorage
 } from './localStorage';
-import {clearTokenApi, setTokenApi} from '../../../api/api';
+import {githubAPI} from '../../../api/api';
 import {getterIsAuthorized} from './auth_reducer';
 
 
@@ -23,13 +23,13 @@ export default function* authGitSaga() {
         const action = yield take(authorize);
         token = action.payload;
     }
-    yield call(setTokenApi, token);
+    yield call(githubAPI.setTokenApi, token);
     yield call(setTokenToLocalStorage, token);
 
     yield take(logout);
 
     yield call(removeTokenFromLocalStorage);
-    yield call(clearTokenApi);
+    yield call(githubAPI.clearTokenApi);
 }
 
 

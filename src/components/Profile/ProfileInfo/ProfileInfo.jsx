@@ -5,6 +5,7 @@ import userPhoto from '../../users/user.jpg';
 import ProfileStatusHook from "./ProfileStatusHook";
 import Contacts from "./Contacts";
 import ProfileDataForm from "./ProfileDataForm";
+import NetworkError from "../../errors/NetworkError";
 
 
 const ProfileInfo = (props) => {
@@ -51,7 +52,7 @@ const ProfileInfo = (props) => {
                 <div className={s.stats}>
                     <p className={s.name}>{fullName}</p>
                     <ProfileStatusHook update={updateStatus} status={status}/>
-                    {error !== '' && <div style={{color: 'yellow', border: '3px dashed red', padding: '5px'}}>{error}</div>}
+                    {error !== '' && <NetworkError error={error} />}
                     {editMode
                         ? <ProfileDataForm contacts={contacts} initialValues={props.profile} onSubmit={onSubmit}/>
                         : <ProfileData setEditMode={setEditMode} isOwner={isOwner} profile={props.profile}/>}

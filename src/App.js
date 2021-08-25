@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/navbar/navbar';
 import Todo from './components/todo/Todo';
-import {Route, withRouter} from 'react-router-dom';
+import {Route, Switch, withRouter} from 'react-router-dom';
 import DialogsContainer from './components/dialogs/dialogsContainer';
 import UsersContainer from './components/users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
@@ -18,9 +18,6 @@ import LessonDialogs from './components/LessonDialogs/LessonDialogs';
 import LAuth from './components/LessonDialogs/auth/LAuth';
 import NavbarTelephone from "./components/navbar/NavbarTelephone";
 
-/*import Lesson from './components/lesson/Lesson';
-import ShowOneFilm from "./components/lesson/ShowOneFilm";
-import GitHub from './components/githubLesson/github';*/
 const Lesson = React.lazy(() => import('./components/lesson/Lesson'))
 const ShowOneFilm = React.lazy(() => import('./components/lesson/ShowOneFilm'))
 const GitHub = React.lazy(() => import('./components/githubLesson/github'))
@@ -39,19 +36,20 @@ class App extends React.Component {
                 <Navbar/>
                 <NavbarTelephone/>
                 <div className="content style">
-                    {/*<Route path='/messages' component={Dialogs}/>*/}
-                    {/*<Route path='/profile' render={Profile}/>*/}
-                    <Route path="/todo" render={() => <Todo/>}/>
-                    <Route path="/messages" render={() => <DialogsContainer/>}/>
-                    <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
-                    <Route path="/users" render={() => <UsersContainer/>}/>
-                    <Route path="/login" render={() => <Login/>}/>
-                    <Route path="/loginGit" render={() => <LoginGit/>}/>
-                    <Route path="/lesson" render={withSuspense(Lesson)}/>
-                    <Route path="/github" render={withSuspense(GitHub)}/>
-                    <Route path="/lessonDialogs" render={withSuspense(LessonDialogs)}/>
-                    <Route path="/show/:id" render={withSuspense(ShowOneFilm)}/>
-                    <Route path="/LAuth" render={() => <LAuth/>}/>
+                    <Switch>
+                        <Route exact path="/todo" render={() => <Todo/>}/>
+                        <Route path="/messages" render={() => <DialogsContainer/>}/>
+                        <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
+                        <Route path="/users" render={() => <UsersContainer/>}/>
+                        <Route exact path="/login" render={() => <Login/>}/>
+                        <Route path="/loginGit" render={() => <LoginGit/>}/>
+                        <Route path="/lesson" render={withSuspense(Lesson)}/>
+                        <Route path="/github" render={withSuspense(GitHub)}/>
+                        <Route path="/lessonDialogs" render={withSuspense(LessonDialogs)}/>
+                        <Route path="/show/:id" render={withSuspense(ShowOneFilm)}/>
+                        <Route path="/LAuth" render={() => <LAuth/>}/>
+                        <Route path={'*'} render={() => <div style={{fontSize: '50px',padding: '5vh'}}>404 not found</div>}/>
+                    </Switch>
                     <img width="200px" src="skel.png" className="img1" alt={''}/>
                     <img width="200px" src="skel.png" className="img2" alt={''}/>
                 </div>

@@ -1,13 +1,18 @@
-import {AuthAPI} from '../api/api';
+import {AuthAPI, securityAPI} from '../api/api';
 import {stopSubmit} from 'redux-form';
 
 const SET_USER_DATA = 'SET_USER_DATA';
+const GET_CAPTCHA_URL_SUCCESS = 'GET_CAPTCHA_URL_SUCCESS'
+
+
+
 
 let initialState = {
     id: undefined,
     email: undefined,
     login: undefined,
     isAuth: false,
+    captchaUrl: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -17,12 +22,19 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload,
             };
+        case GET_CAPTCHA_URL_SUCCESS: {
+            return {
+                ...state,
+                captchaUrl: action.payload.captchaUrl
+            }
+        }
         default:
             return state;
     }
 };
 
 const setAuthUserData = (id, email, login, isAuth) => ({type: SET_USER_DATA, payload: {id, email, login, isAuth}});
+const getCaptchaUrlSuccess = (captchaUrl) => ({type: GET_CAPTCHA_URL_SUCCESS, payload: {captchaUrl}});
 
 export const auth = () => (dispatch) => {
     AuthAPI.me().then(r => {
@@ -32,17 +44,29 @@ export const auth = () => (dispatch) => {
             }
         });
 };
-export const login = (email, password, rememberMe) => dispatch => {
-    AuthAPI.login(email, password, rememberMe).then(r => {
+export const login = (email, password, rememberMe,captcha) => dispatch => {
+    AuthAPI.login(email, password, rememberMe,captcha).then(r => {
         if (r.data.resultCode === 0) {
             dispatch(auth());
         } else {
+            if(r.data.resultCode === 10) {
+                dispatch(getCaptchaUrl())
+            }
             dispatch(stopSubmit('login', {_error: r.data.messages.length > 0 ? r.data.messages[0] : 'Something is wrong'}));
         }
     });
 };
+export const getCaptchaUrl = () => async (dispatch) => {
+    const response = await securityAPI.getCaptchaUrl();
+    const captchaUrl = response.data.url
+    dispatch(getCaptchaUrlSuccess(captchaUrl))
 
+}
 export const logout = () => dispatch => {
     AuthAPI.logout().then(r => r.data.resultCode === 0 && dispatch(setAuthUserData(null, null, null, false)));
 };
+
+export const getAuth = state => state.authPage.isAuth
+export const getCaptcha = state => state.authPage.captchaUrl
+
 export default authReducer;
