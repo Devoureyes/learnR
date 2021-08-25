@@ -3,6 +3,7 @@ import Slideshow from "../sl";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
+
 const Profile = (p) => {
     const {
         profile,

@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/navbar/navbar';
 import Todo from './components/todo/Todo';
-import {Route, Switch, withRouter} from 'react-router-dom';
+import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 import DialogsContainer from './components/dialogs/dialogsContainer';
 import UsersContainer from './components/users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
@@ -14,14 +14,13 @@ import {initializeApp} from './redux/appReducer';
 import Loader from './components/todo/Loader';
 import LoginGit from './components/githubLesson/login/LoginGit';
 import {withSuspense} from './components/hoc/withSuspense';
-import LessonDialogs from './components/LessonDialogs/LessonDialogs';
 import LAuth from './components/LessonDialogs/auth/LAuth';
 import NavbarTelephone from "./components/navbar/NavbarTelephone";
 
 const Lesson = React.lazy(() => import('./components/lesson/Lesson'))
 const ShowOneFilm = React.lazy(() => import('./components/lesson/ShowOneFilm'))
 const GitHub = React.lazy(() => import('./components/githubLesson/github'))
-
+const LessonDialogs = React.lazy(() => import('./components/LessonDialogs/LessonDialogs'))
 class App extends React.Component {
     componentDidMount() {
         this.props.initializeApp();
@@ -37,6 +36,7 @@ class App extends React.Component {
                 <NavbarTelephone/>
                 <div className="content style">
                     <Switch>
+                        <Route exact path="/" render={() => <Redirect to={'/profile'}/>}/>
                         <Route exact path="/todo" render={() => <Todo/>}/>
                         <Route path="/messages" render={() => <DialogsContainer/>}/>
                         <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
