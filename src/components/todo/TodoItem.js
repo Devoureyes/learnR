@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import Context from "../../redux/Context";
 
@@ -29,7 +29,7 @@ const styles = {
 }
 
 const TodoItem = ({todo, index, onChange}) => {
-    const {removeTodo} = React.useContext(Context)
+    const {removeTodo} = useContext(Context)
 
     const classes = []
 
@@ -37,7 +37,7 @@ const TodoItem = ({todo, index, onChange}) => {
         classes.push('done')
     }
 
-    return (<li className="li_todo" style={styles.li}>
+    return <li className="li_todo" style={styles.li}>
         <span onClick={() => {onChange(todo.id)}} className={classes.join(' ')}>
             <input
                 style={styles.input}
@@ -49,7 +49,7 @@ const TodoItem = ({todo, index, onChange}) => {
             {todo.title}
         </span>
         <button onClick={removeTodo.bind(null, todo.id)} style={styles.button}>&times;</button>
-    </li>)
+    </li>
 }
 
 TodoItem.propTypes = {

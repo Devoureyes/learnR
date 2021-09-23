@@ -1,11 +1,23 @@
 import React from "react";
 import s from "./users.module.css";
 import userPhoto from "./user.jpg";
-import PropTypes from "prop-types";
 import {NavLink} from "react-router-dom";
 import Select from 'react-select'
 
-const Users = (props) => {
+type propsType = {
+    users: any
+    currentPages: number
+    currentPage: number
+    pages: any
+    setCurrentPages: any
+    onPageChanged: (pageNumber:number) => void
+    follow: any
+    setPageSize: any
+    unfollow: any
+    followingInProgress: Array<number>
+}
+
+const Users = (props:propsType) => {
     const {
             users,
             currentPages,
@@ -14,7 +26,6 @@ const Users = (props) => {
             setCurrentPages,
             onPageChanged,
             follow,
-            setPageSize,
             unfollow,
             followingInProgress,
     } = props
@@ -22,7 +33,7 @@ const Users = (props) => {
 
     return <div>
         <div className={s.users}>
-            {users.map((u, i) => <div key={i}>
+            {users.map((u:any, i:number) => <div key={i}>
                     <span>
                         <div>
                             <NavLink to={'/profile/' + u.id}>
@@ -48,13 +59,13 @@ const Users = (props) => {
             )}
         </div>
         <div style={{width: '30%', margin: 'auto'}}>
-            <Sel setPageSize={setPageSize}/>
+            <Sel />
         </div>
         <div className={s.pages}>
             {pages[currentPages] !== undefined && currentPages === 0 ? '' :
                 <span onClick={() => setCurrentPages(currentPages - 1)}>⇚</span>
             }
-            {pages[currentPages] !== undefined && pages[currentPages].map((pageNumber, i) => {
+            {pages[currentPages] !== undefined && pages[currentPages].map((pageNumber:number, i:number) => {
                 return <span key={i} onClick={(e) => onPageChanged(pageNumber)}
                              className={currentPage === pageNumber ? s.selectedPage : ''}>{pageNumber}</span>
             })}
@@ -65,24 +76,13 @@ const Users = (props) => {
     </div>
 }
 
-const Sel = ({setPageSize}) => {
+const Sel = () => {
     let options = [
         {value: 10, label: '10'},
         {value: 25, label: '25'},
         {value: 50, label: '50'}
     ]
     return <Select options={options}/>
-}
-
-Users.propTypes = {
-    users: PropTypes.arrayOf(PropTypes.object),
-    currentPages: PropTypes.number,
-    currentPage: PropTypes.number,
-    pageSize: PropTypes.number,
-    pages: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
-    unfollow: PropTypes.func,
-    follow: PropTypes.func,
-    setCurrentPages: PropTypes.func,
 }
 
 export default Users

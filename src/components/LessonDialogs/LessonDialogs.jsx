@@ -29,7 +29,6 @@ const InputReduxForm = reduxForm({
 })(DialogInputForm);
 
 const LessonDialogs = React.memo(props => {
-
     const {
         setUsersLRequest,
         setDialogLRequest,

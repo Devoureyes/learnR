@@ -13,6 +13,7 @@ import Loader from '../todo/Loader';
 let maxLength50 = maxLengthCreator(50);
 
 const Lesson = React.memo(props => {
+
     const {
         fetch,
         serials,

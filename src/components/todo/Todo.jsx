@@ -1,7 +1,6 @@
 import React from 'react';
 import TodoList from "./TodoList";
 import Context from "../../redux/Context";
-//import AddTodo from "./AddTodo";
 import Loader from "./Loader";
 import Modal from "./modal/Modal";
 
@@ -49,7 +48,7 @@ export default () => {
         }]))
     }
 
-    return (<Context.Provider value={{removeTodo}}>
+    return <Context.Provider value={{removeTodo}}>
         <div className="todo_page">
             <h1 style={styles.h1}>Todo tutorial</h1>
             <Modal />
@@ -63,6 +62,6 @@ export default () => {
                 loading ? null :(<h3 style={styles.h3}>No TODO's</h3>)
             }
         </div>
-    </Context.Provider>)
+    </Context.Provider>
 }
 

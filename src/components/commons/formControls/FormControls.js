@@ -9,6 +9,10 @@ export const FormControl = ({input, meta, ...props}) => (
             || (meta.warning && <span className={s.span}>{meta.warning}</span>))}
     </div>)
 
+export const Input = props => {
+    const {input, meta, ...restProps} = props
+    return <FormControl {...props} ><input {...input} {...restProps}/></FormControl>
+};
 export const createField = (placeholder, name, validators, component, props = {}, text = "") => (
     <div>
         <Field placeholder={placeholder} name={name}
@@ -25,10 +29,6 @@ export const Textarea = ({input, placeholder, meta: {touched, error, warning}}) 
     </div>
 </div>);
 
-export const Input = props => {
-    const {input, meta, ...restProps} = props
-    return <FormControl {...props} ><input {...input} {...restProps}/></FormControl>
-};
 
 export const loginInput = ({input, label, meta: {touched, error, warning}}) => (<div>
     <div className={s.login}>

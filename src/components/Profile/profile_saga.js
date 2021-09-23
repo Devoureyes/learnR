@@ -7,7 +7,6 @@ import {
     setUserPhotoSuccess
 } from './profile_actions';
 import {profileAPI} from '../../api/api';
-import {stopSubmit} from "redux-form";
 
 function* setUserPhoto_saga({payload}) {
     try {
